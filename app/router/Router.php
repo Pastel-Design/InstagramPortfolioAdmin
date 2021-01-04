@@ -4,7 +4,12 @@ namespace app\router;
 
 require(__DIR__ . "/../../vendor/autoload.php");
 
+use app\config\DbConfig;
 use App\controllers\Controller;
+use app\exceptions\SignException;
+use app\models\DbManager;
+use app\models\SignManager;
+use PDOException;
 
 /**
  * Router
@@ -29,9 +34,22 @@ final class Router
         extract($parsedParams);
 
         if (empty($parsedURL[0])) {
-            array_unshift($parsedURL,"default");
+            array_unshift($parsedURL, "default");
         }
-
+        try {
+            DbManager::connect(DbConfig::$host, DbConfig::$username, DbConfig::$pass, DbConfig::$database);
+        } catch (PDOException $exception) {
+            if ($parsedURL[0] != "error") {
+                $this->reroute("error/500");
+            }
+        }
+        try {
+            SignManager::checkAdmin();
+        } catch (SignException $exception) {
+            if ($parsedURL[0] != "sign") {
+                $this->reroute("sign/in");
+            }
+        }
         $controllerName = $this->dashToCamel(array_shift($parsedURL));
         $controllerClass = $controllerName . 'Controller';
 

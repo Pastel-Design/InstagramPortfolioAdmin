@@ -19,6 +19,5 @@ function autoloadFunction($class)
 spl_autoload_register("autoloadFunction");
 
 session_start();
-
 $router = new Router();
 $router->process(array($_SERVER['REQUEST_URI']));
