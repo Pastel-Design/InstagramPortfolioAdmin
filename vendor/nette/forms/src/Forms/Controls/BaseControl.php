@@ -50,7 +50,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	/** @var Html  label element template */
 	protected $label;
 
-	/** @var bool */
+	/** @var bool|bool[] */
 	protected $disabled = false;
 
 	/** @var callable[][]  extension methods */
@@ -68,7 +68,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	/** @var Rules */
 	private $rules;
 
-	/** @var Nette\Localization\ITranslator */
+	/** @var Nette\Localization\ITranslator|bool|null */
 	private $translator = true; // means autodetect
 
 	/** @var array user options */
@@ -105,9 +105,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	}
 
 
-	/**
-	 * @return object|string
-	 */
+	/** @return object|string */
 	public function getCaption()
 	{
 		return $this->caption;
@@ -147,7 +145,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	 */
 	public function getHtmlName(): string
 	{
-		return Nette\Forms\Helpers::generateHtmlName($this->lookupPath(Form::class));
+		return $this->control->name ?? Nette\Forms\Helpers::generateHtmlName($this->lookupPath(Form::class));
 	}
 
 
@@ -202,9 +200,10 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 
 	/**
 	 * Disables or enables control.
+	 * @param  bool  $value
 	 * @return static
 	 */
-	public function setDisabled(/*bool*/ $value = true)
+	public function setDisabled($value = true)
 	{
 		if ($this->disabled = (bool) $value) {
 			$this->setValue(null);
@@ -268,15 +267,15 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	/**
 	 * Generates label's HTML element.
 	 * @param  string|object  $caption
-	 * @return Html|string
+	 * @return Html|string|null
 	 */
 	public function getLabel($caption = null)
 	{
 		$label = clone $this->label;
 		$label->for = $this->getHtmlId();
-		$caption = $caption === null ? $this->caption : $caption;
+		$caption = $caption ?? $this->caption;
 		$translator = $this->getForm()->getTranslator();
-		$label->setText($translator ? $translator->translate($caption) : $caption);
+		$label->setText($translator && !$caption instanceof Nette\Utils\IHtmlString ? $translator->translate($caption) : $caption);
 		return $label;
 	}
 
@@ -347,6 +346,15 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	public function setHtmlAttribute(string $name, $value = true)
 	{
 		$this->control->$name = $value;
+		if (
+			$name === 'name'
+			&& ($form = $this->getForm(false))
+			&& !$this->isDisabled()
+			&& $form->isAnchored()
+			&& $form->isSubmitted()
+		) {
+			$this->loadHttpData();
+		}
 		return $this;
 	}
 
@@ -381,7 +389,9 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	public function getTranslator(): ?Nette\Localization\ITranslator
 	{
 		if ($this->translator === true) {
-			return $this->getForm(false) ? $this->getForm()->getTranslator() : null;
+			return $this->getForm(false)
+				? $this->getForm()->getTranslator()
+				: null;
 		}
 		return $this->translator;
 	}
@@ -396,7 +406,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 		if ($translator = $this->getTranslator()) {
 			$tmp = is_array($value) ? [&$value] : [[&$value]];
 			foreach ($tmp[0] as &$v) {
-				if ($v != null && !$v instanceof Html) { // intentionally ==
+				if ($v != null && !$v instanceof Nette\Utils\IHtmlString) { // intentionally ==
 					$v = $translator->translate($v, ...$parameters);
 				}
 			}
@@ -521,9 +531,7 @@ abstract class BaseControl extends Nette\ComponentModel\Component implements ICo
 	}
 
 
-	/**
-	 * @deprecated
-	 */
+	/** @deprecated */
 	public static function enableAutoOptionalMode(): void
 	{
 		trigger_error(__METHOD__ . '() is deprecated.', E_USER_DEPRECATED);

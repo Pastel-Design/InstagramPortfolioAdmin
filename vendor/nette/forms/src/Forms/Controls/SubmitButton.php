@@ -19,10 +19,10 @@ use Nette;
  */
 class SubmitButton extends Button implements Nette\Forms\ISubmitterControl
 {
-	/** @var callable[]  function (SubmitButton $sender): void; Occurs when the button is clicked and form is successfully validated */
+	/** @var callable[]&(callable(SubmitButton): void)[]; Occurs when the button is clicked and form is successfully validated */
 	public $onClick;
 
-	/** @var callable[]  function (SubmitButton $sender): void; Occurs when the button is clicked and form is not validated */
+	/** @var callable[]&(callable(SubmitButton): void)[]; Occurs when the button is clicked and form is not validated */
 	public $onInvalidClick;
 
 	/** @var array|null */
@@ -40,9 +40,6 @@ class SubmitButton extends Button implements Nette\Forms\ISubmitterControl
 	}
 
 
-	/**
-	 * Loads HTTP data.
-	 */
 	public function loadHttpData(): void
 	{
 		parent::loadHttpData();
@@ -100,10 +97,6 @@ class SubmitButton extends Button implements Nette\Forms\ISubmitterControl
 	}
 
 
-	/**
-	 * Generates control's HTML element.
-	 * @param  string|object  $caption
-	 */
 	public function getControl($caption = null): Nette\Utils\Html
 	{
 		$scope = [];

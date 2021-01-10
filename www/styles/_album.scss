@@ -1,0 +1,11 @@
+.album-select {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.album-select button {
+  margin: 15px;
+}

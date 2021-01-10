@@ -295,7 +295,7 @@ class FileManager
     }
 
     /**
-     * Processes uploaded appliacation
+     * Processes uploaded application
      *
      * @param      $upfileName
      * Uploaded files name

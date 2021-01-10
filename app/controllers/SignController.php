@@ -64,7 +64,7 @@ class SignController extends Controller
         $this->head['page_description'] = "Přihlášení na eshop";
         $this->setView('home');
         $this->data["form"] = $this->signInFactory->create(function () {
-            Router::reroute("home");
+            Router::reroute("");
         });
         $this->setView("In");
     }
@@ -77,6 +77,6 @@ class SignController extends Controller
     public function signOut()
     {
         SignManager::SignOut();
-        Router::reroute("home");
+        Router::reroute("");
     }
 }

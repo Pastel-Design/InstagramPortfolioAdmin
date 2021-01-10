@@ -11,6 +11,30 @@ body {
   font-family: "Roboto", serif;
 }
 
+a {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
+
+a * {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
+
+a * :hover {
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
+
 .sign-page {
   display: flex;
   justify-content: center;
@@ -26,6 +50,18 @@ body {
 
 #frm-SignIn > * {
   margin: 5px;
+}
+
+.album-select {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.album-select button {
+  margin: 15px;
 }
 
 /*# sourceMappingURL=style.css.map */
