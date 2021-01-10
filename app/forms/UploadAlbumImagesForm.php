@@ -10,11 +10,11 @@ use Exception;
 use Nette\Forms\Form;
 
 /**
- * Form FullSignIn
+ * Form FullSignInForm
  *
  * @package app\forms
  */
-final class  NewAlbum extends FormFactory
+final class UploadAlbumImagesForm extends FormFactory
 {
 
     /**
@@ -27,7 +27,7 @@ final class  NewAlbum extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getBootstrapForm("NewAlbum");
+        $this->form = parent::getBootstrapForm("UploadAlbumImagesForm");
     }
 
     /**
@@ -37,16 +37,10 @@ final class  NewAlbum extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addText('albumTitle', 'Album title:')
-            ->setHtmlAttribute("placeholder", "album title")
-            ->setRequired(true);
-        $this->form->addText('albumDescription', 'Album description:')
-            ->setHtmlAttribute("placeholder", "album description *")
-            ->setRequired(true);
-        $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setHtmlAttribute("placeholder", "album keywords *")
-            ->setRequired(true);
-        $this->form->addSubmit("submit", "Create");
+        $this->form->addMultiUpload('albumImages', 'Album Images')
+            ->addRule($this->form::MAX_LENGTH, 'You can upload max %d images.', 50)
+            ->addRule($this->form::IMAGE,"You can upload only images");
+        $this->form->addSubmit("submit", "Upload");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");

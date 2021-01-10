@@ -9,11 +9,11 @@ use app\models\SignManager;
 use Nette\Forms\Form;
 
 /**
- * Form FullSignIn
+ * Form FullSignInForm
  *
  * @package app\forms
  */
-final class  FullSignIn extends FormFactory
+final class  FullSignInForm extends FormFactory
 {
 
     /**

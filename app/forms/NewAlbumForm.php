@@ -10,11 +10,11 @@ use Exception;
 use Nette\Forms\Form;
 
 /**
- * Form FullSignIn
+ * Form FullSignInForm
  *
  * @package app\forms
  */
-final class UploadAlbumImages extends FormFactory
+final class  NewAlbumForm extends FormFactory
 {
 
     /**
@@ -27,7 +27,7 @@ final class UploadAlbumImages extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getBootstrapForm("UploadAlbumImages");
+        $this->form = parent::getBootstrapForm("NewAlbumForm");
     }
 
     /**
@@ -37,14 +37,16 @@ final class UploadAlbumImages extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addMultiUpload('albumImages', 'Album Images')
-            ->addRule($this->form::MAX_LENGTH, 'You can upload max %d images.', 50)
-            ->addRule($this->form::MAX_FILE_SIZE, "Files can have max size of 10MB", 10000000)
-            ->addRule($this->form::IMAGE,"You can upload only images");
-        $this->form->addUpload('albumImage', 'Album Image')
-            ->addRule($this->form::MAX_FILE_SIZE, "Files can have max size of 10MB", 10000000)
-            ->addRule($this->form::IMAGE,"You can upload only images");
-        $this->form->addSubmit("submit", "Upload");
+        $this->form->addText('albumTitle', 'Album title:')
+            ->setHtmlAttribute("placeholder", "album title")
+            ->setRequired(true);
+        $this->form->addText('albumDescription', 'Album description:')
+            ->setHtmlAttribute("placeholder", "album description *")
+            ->setRequired(true);
+        $this->form->addText('albumKeywords', 'Album keywords:')
+            ->setHtmlAttribute("placeholder", "album keywords *")
+            ->setRequired(true);
+        $this->form->addSubmit("submit", "Create");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");

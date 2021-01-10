@@ -5,7 +5,7 @@ namespace app\controllers;
 
 
 use app\forms\FullSignUp;
-use app\forms\FullSignIn;
+use app\forms\FullSignInForm;
 use app\models\SignManager;
 use app\router\Router;
 use Exception;
@@ -19,14 +19,14 @@ class SignController extends Controller
 {
 
     /**
-     * @var FullSignIn $signInFactory
+     * @var FullSignInForm $signInFactory
      */
-    private FullSignIn $signInFactory;
+    private FullSignInForm $signInFactory;
 
     public function __construct()
     {
         parent::__construct();
-        $this->signInFactory = new FullSignIn();
+        $this->signInFactory = new FullSignInForm();
     }
 
     /**

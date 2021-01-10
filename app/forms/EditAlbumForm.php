@@ -8,11 +8,11 @@ use Exception;
 use Nette\Forms\Form;
 
 /**
- * Form FullSignIn
+ * Form FullSignInForm
  *
  * @package app\forms
  */
-final class  EditAlbum extends FormFactory
+final class  EditAlbumForm extends FormFactory
 {
 
     private string $title;
@@ -25,7 +25,7 @@ final class  EditAlbum extends FormFactory
     private Form $form;
 
     /**
-     * EditAlbum constructor.
+     * EditAlbumForm constructor.
      *
      * @param string $title
      * @param string $description
@@ -38,7 +38,7 @@ final class  EditAlbum extends FormFactory
         $this->description = $description;
         $this->keywords = $keywords;
         $this->visible = $visible;
-        $this->form = parent::getBootstrapForm("EditAlbum");
+        $this->form = parent::getBootstrapForm("EditAlbumForm");
     }
 
     /**
@@ -60,7 +60,7 @@ final class  EditAlbum extends FormFactory
             ->setRequired(true);
         $this->form->addCheckbox('albumVisible', "Album is visible:")
             ->setDefaultValue($this->visible);
-        $this->form->addSubmit("submit", "Create");
+        $this->form->addSubmit("submit", "Edit");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");

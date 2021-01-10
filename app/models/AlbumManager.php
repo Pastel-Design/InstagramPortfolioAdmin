@@ -50,8 +50,6 @@ class AlbumManager
         } else {
             return false;
         }
-
-
     }
 
     /**
@@ -75,13 +73,36 @@ class AlbumManager
         $newAlbums = array();
         foreach ($albums as $album) {
             if ($album["cover_photo"] == Null) {
-                $album["cover_photo"] = DbManager::requestUnit("SELECT filename FROM image WHERE album_id = ? ORDER BY id LIMIT 1",[$album["id"]]);
+                $album["cover_photo"] = DbManager::requestUnit("SELECT filename FROM image WHERE album_id = ? ORDER BY id LIMIT 1", [$album["id"]]);
             } else {
-                $album["cover_photo"] = DbManager::requestUnit("SELECT filename FROM image WHERE id = ?",[$album["cover_photo"]]);
+                $album["cover_photo"] = DbManager::requestUnit("SELECT filename FROM image WHERE id = ?", [$album["cover_photo"]]);
             }
-            array_push($newAlbums,$album);
+            array_push($newAlbums, $album);
         }
         return $newAlbums;
+    }
+
+    /**
+     * @param array  $images
+     * @param string $albumTitle
+     *
+     * @return void
+     */
+    public function uploadImages(array $images, string $albumTitle): void
+    {
+        $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$albumTitle]);
+        for ($i = 0; $i < sizeof($images["filenames"]); $i++) {
+            DbManager::requestInsert("INSERT INTO image(filename, data_type, added, edited, title, description, `order`, album_id) 
+                                      VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,'',0,?)",
+                [$images["filenames"][$i], explode(".", $images["filenames"][$i])[1], explode(".", $images["file-names"][$i])[0], $albumId]);
+        }
+
+    }
+
+    public function getAlbumImages($title)
+    {
+        $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$title]);
+        return DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ?",[$albumId]);
     }
 
 }

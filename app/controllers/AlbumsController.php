@@ -2,10 +2,11 @@
 
 namespace app\controllers;
 
-use app\forms\EditAlbum;
-use app\forms\NewAlbum;
-use app\forms\UploadAlbumImages;
+use app\forms\EditAlbumForm;
+use app\forms\NewAlbumForm;
+use app\forms\UploadAlbumImagesForm;
 use app\models\AlbumManager;
+use app\models\UploadManager;
 use app\router\Router;
 use Exception;
 use PDOException;
@@ -70,7 +71,7 @@ class AlbumsController extends Controller
 
     private function newAlbum()
     {
-        $newAlbumFactory = new NewAlbum();
+        $newAlbumFactory = new NewAlbumForm();
         $this->data["form"] = $newAlbumFactory->create(function ($values) {
             $values["albumDashtitle"] = $this->basicToDash($values["albumTitle"]);
             try {
@@ -98,8 +99,9 @@ class AlbumsController extends Controller
     private function editAlbum($title)
     {
         $album = $this->albumManager->getAlbumInfo($title);
-        $editAlbumFactory = new EditAlbum($album["title"], $album["description"], $album["keywords"], $album["visible"]);
-        $uploadAlbumImages = new UploadAlbumImages();
+        $images = $this->albumManager->getAlbumImages($title);
+        $editAlbumFactory = new EditAlbumForm($album["title"], $album["description"], $album["keywords"], $album["visible"]);
+        $uploadAlbumImages = new UploadAlbumImagesForm();
 
         $this->data["editForm"] = $editAlbumFactory->create(function ($values) use ($title) {
             $values["oldDashtitle"] = $title;
@@ -111,10 +113,12 @@ class AlbumsController extends Controller
                 $this->data["message"] = "Error occurred, try again!";
             }
         });
-        $this->data["uploadForm"] = $uploadAlbumImages->create(function ($values) {
-            $_SESSION["images"]=$values;
-            var_dump($_SESSION);
+        $this->data["uploadForm"] = $uploadAlbumImages->create(function ($values) use ($title) {
+            $images = UploadManager::UploadMultiple($values["albumImages"]);
+            $this->albumManager->uploadImages($images,$title);
+                Router::reroute("albums/edit/".$title);
         });
+        $this->data["images"] = $images;
         $this->data["album"] = $album;
         $this->head['page_title'] = "";
         $this->head['page_keywords'] = "";

@@ -64,4 +64,18 @@ a * :hover {
   margin: 15px;
 }
 
+.image-container {
+  padding: 5px;
+  border: 1px solid #6e6e6e;
+  border-radius: 3px;
+  margin: 2px;
+  display: flex;
+  flex-flow: column;
+}
+
+.form-control-feedback {
+  color: #ff362e;
+  font-weight: bold;
+}
+
 /*# sourceMappingURL=style.css.map */

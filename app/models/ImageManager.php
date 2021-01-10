@@ -5,7 +5,10 @@ namespace app\models;
 require("../vendor/autoload.php");
 
 use app\config\ImageOptimizerConfig;
+use Exception;
 use Intervention\Image\ImageManagerStatic as Image;
+use Intervention\Image\Exception\NotWritableException;
+use RuntimeException;
 
 
 /**
@@ -21,11 +24,42 @@ class ImageManager
      *
      * @param string $imgURL
      *
-     * @return void
+     * @return RuntimeException|void
      */
-    static function defaultImage(string $imgURL): void
+    static function defaultImage(string $imgURL)
     {
-        $img = Image::make($imgURL);
+        try {
+            self::editImage($imgURL,$imgURL);
+        } catch (NotWritableException $exception) {
+            return new RuntimeException;
+        }
+    }
+
+    /**
+     * Makes thumbnail version of image, by defined resolution in ImageOptimizerConfig
+     *
+     * @param string $imgURL
+     *
+     * @return RuntimeException|void
+     */
+    static function makeThumbnail(string $imgURL)
+    {
+        $newURL = "images/thumbnail/" . array_reverse(explode("/", $imgURL))[0];
+        $oldURL = $imgURL;
+        try {
+            self::editImage($newURL,$oldURL);
+        } catch (NotWritableException $exception) {
+            return new RuntimeException;
+        }
+    }
+
+    /**
+     * @throws NotWritableException
+     * @param $imgURL
+     */
+    static function editImage($newURL,$oldURL)
+    {
+        $img = Image::make($oldURL);
 
         $height = $img->height();
         $width = $img->width();
@@ -36,7 +70,7 @@ class ImageManager
                     $constraint->aspectRatio();
                 });
             } else {
-                $img->save($imgURL);
+                $img->save($newURL);
             }
         } //na výšku
         else {
@@ -45,45 +79,9 @@ class ImageManager
                     $constraint->aspectRatio();
                 });
             } else {
-                $img->save($imgURL);
+                $img->save($newURL);
             }
         }
-        $img->save($imgURL);
-    }
-
-    /**
-     * Makes thumbnail version of image, by defined resolution in ImageOptimizerConfig
-     *
-     * @param string $imgURL
-     *
-     * @return void
-     */
-    static function makeThumbnail(string $imgURL): void
-    {
-        $img = Image::make($imgURL);
-        $imgName = array_reverse(explode("/", $imgURL))[0];
-
-        $height = $img->height();
-        $width = $img->width();
-        //na šířku
-        if ($width > $height) {
-            if ($width > ImageOptimizerConfig::$thumbnailWidth) {
-                $img->resize(ImageOptimizerConfig::$thumbnailWidth, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-            } else {
-                $img->save("images/thumbnails/" . $imgName);
-            }
-        } //na výšku
-        else {
-            if ($height > ImageOptimizerConfig::$thumbnailHeight) {
-                $img->resize(null, ImageOptimizerConfig::$thumbnailHeight, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-            } else {
-                $img->save("images/thumbnails/" . $imgName);
-            }
-        }
-        $img->save("images/thumbnails/" . $imgName);
+        $img->save($newURL);
     }
 }
