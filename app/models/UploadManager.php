@@ -52,7 +52,6 @@ class UploadManager
                 ImageManager::makeThumbnail($fileNameWDir);
             }
         } catch (RuntimeException $exception) {
-            var_dump($exception);
             if(!empty($files)){
                 foreach ($files as $filename){
                     unlink("images/fullView/".$filename);

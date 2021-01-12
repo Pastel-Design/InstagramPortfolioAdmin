@@ -85,7 +85,7 @@ final class Router
         }
         $return["parsedGET"] = array();
         if (isset($url["query"])) {
-            $parsedGET = explode(";", $url["query"]);
+            $parsedGET = explode("&", $url["query"]);
 
             foreach ($parsedGET as $get) {
                 $get = explode("=", $get);

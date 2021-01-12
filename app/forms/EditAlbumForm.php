@@ -49,14 +49,14 @@ final class  EditAlbumForm extends FormFactory
     public function create(callable $onSuccess): Form
     {
         $this->form->addText('albumTitle', 'Album title:')
-            ->setHtmlAttribute("placeholder", $this->title)
+            ->setDefaultValue($this->title)
             ->setRequired(true);
         $this->form->addTextArea('albumDescription', 'Album description:')
-            ->setHtmlAttribute("placeholder", $this->description)
             ->setHtmlAttribute("class", "form-control")
+            ->setDefaultValue($this->description)
             ->setRequired(true);
         $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setHtmlAttribute("placeholder", $this->keywords)
+            ->setDefaultValue($this->keywords)
             ->setRequired(true);
         $this->form->addCheckbox('albumVisible', "Album is visible:")
             ->setDefaultValue($this->visible);

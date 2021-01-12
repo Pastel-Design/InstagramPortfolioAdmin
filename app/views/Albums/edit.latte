@@ -11,16 +11,16 @@
         {$uploadForm->render()}
     </div>
     {ifset $images}
-        <div class="container d-flex">
+        <div class="container images-container" >
             {foreach $images as $image}
-                <div class="image-container">
-                    <img src="images/fullview/{$image["filename"]}" width="250">
+                <div class="image-container{if $image["cover_photo"]} cover-photo{/if}" image-id="{$image["id"]}">
+                    <img src="images/fullview/{$image["filename"]}" width="250" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image">
                     <label>Title:</label>
-                    <input type="text" class="form-control" image-id="{$image["id"]}">
+                    <input type="text" class="form-control" name="title" image-id="{$image["id"]}" value="{$image["title"]}">
                     <label>Description:</label>
-                    <input type="text" class="form-control" image-id="{$image["id"]}">
-                    <button class="btn btn-warning" image-id="{$image["id"]}">Edit</button>
-                    <button class="btn btn-danger" image-id="{$image["id"]}">Remove</button>
+                    <input type="text" class="form-control" name="description" image-id="{$image["id"]}" value="{$image["description"]}">
+                    <button class="btn btn-warning edit-image-btn" image-id="{$image["id"]}">Edit</button>
+                    <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}">Remove</button>
                 </div>
             {/foreach}
         </div>

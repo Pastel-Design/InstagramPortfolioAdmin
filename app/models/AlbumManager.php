@@ -9,6 +9,11 @@ use PDOException;
 
 class AlbumManager
 {
+    /**
+     * @param $albumTitle
+     *
+     * @return bool
+     */
     public function albumExists($albumTitle)
     {
         return DbManager::requestAffect("SELECT title FROM album WHERE title=?", [$albumTitle]) == 1;
@@ -67,6 +72,9 @@ class AlbumManager
         }
     }
 
+    /**
+     * @return array
+     */
     public function getAllAlbums()
     {
         $albums = DbManager::requestMultiple("SELECT id,title,dash_title,cover_photo,no_photos,visible FROM album");
@@ -96,13 +104,68 @@ class AlbumManager
                                       VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,'',0,?)",
                 [$images["filenames"][$i], explode(".", $images["filenames"][$i])[1], explode(".", $images["file-names"][$i])[0], $albumId]);
         }
+        if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id=?", [$albumId]) == Null) {
+            $coverImage = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? ORDER BY id LIMIT 1", [$albumId]);
+            DbManager::requestInsert("UPDATE album SET cover_photo=? WHERE id=?", [$coverImage, $albumId]);
+        }
 
     }
 
+    /**
+     * @param $title
+     *
+     * @return array
+     */
     public function getAlbumImages($title)
     {
+        $newImages = array();
         $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$title]);
-        return DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ?",[$albumId]);
+        $images = DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ?", [$albumId]);
+        foreach ($images as $image) {
+            if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id=?", [$albumId]) == $image["id"]) {
+                $image["cover_photo"] = true;
+            } else {
+                $image["cover_photo"] = false;
+            }
+            array_push($newImages, $image);
+        }
+        return $newImages;
     }
 
+    /**
+     * @param int $id
+     *
+     * @return bool
+     */
+    public function imageExists(int $id)
+    {
+        return DbManager::requestAffect("SELECT id FROM image WHERE id=?", [$id]) == 1;
+    }
+
+    /**
+     * @param $data
+     * @param $imageId
+     *
+     * @return boolean
+     *
+     * @throws PDOException
+     */
+    public function editImage($data, $imageId)
+    {
+        if (DbManager::requestInsert("UPDATE image SET title=?, description=? WHERE id=?", [$data["title"], $data["description"], $imageId]) instanceof PDOException) {
+            return false;
+        } else {
+            DbManager::requestInsert("UPDATE image SET edited=CURRENT_TIMESTAMP WHERE id = ?", [$imageId]);
+            return true;
+        }
+    }
+
+    /**
+     * @param $imageId
+     * @param $albumId
+     */
+    public function setCoverPhoto($imageId, $albumId)
+    {
+        DbManager::requestAffect("UPDATE album SET cover_photo=? WHERE id=?",[$imageId,$albumId]);
+    }
 }

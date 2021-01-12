@@ -114,10 +114,12 @@ class AlbumsController extends Controller
             }
         });
         $this->data["uploadForm"] = $uploadAlbumImages->create(function ($values) use ($title) {
-            $images = UploadManager::UploadMultiple($values["albumImages"]);
-            $this->albumManager->uploadImages($images,$title);
-                Router::reroute("albums/edit/".$title);
+            if ($images = UploadManager::UploadMultiple($values["albumImages"])) {
+                $this->albumManager->uploadImages($images, $title);
+            }
+            Router::reroute("albums/edit/" . $title);
         });
+        $this->data["albumId"] = $album["id"];
         $this->data["images"] = $images;
         $this->data["album"] = $album;
         $this->head['page_title'] = "";

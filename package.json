@@ -4,5 +4,7 @@
   "repository": "",
   "license": "proprietary",
   "version": "1.0.0",
-  "dependencies": {}
+  "dependencies": {
+    "axios": "^0.21.0"
+  }
 }

@@ -10,6 +10,11 @@
   margin: 15px;
 }
 
+.images-container {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 .image-container {
   padding: 5px;
   border: 1px solid #6e6e6e;
@@ -17,4 +22,14 @@
   margin: 2px;
   display: flex;
   flex-flow: column;
+}
+
+.cover-photo {
+  border-color: #ff362e;
+  border-width: 2px;
+  margin: 1px;
+}
+
+.album-image{
+  cursor: pointer;
 }
