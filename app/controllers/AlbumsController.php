@@ -9,7 +9,6 @@ use app\models\AlbumManager;
 use app\models\UploadManager;
 use app\router\Router;
 use Exception;
-use PDOException;
 
 /**
  * Controller AlbumController

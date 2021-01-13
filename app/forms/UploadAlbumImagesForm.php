@@ -2,10 +2,8 @@
 
 namespace app\forms;
 
-require("../vendor/autoload.php");
+require("../../vendor/autoload.php");
 
-use app\exceptions\SignException;
-use app\models\SignManager;
 use Exception;
 use Nette\Forms\Form;
 
@@ -37,11 +35,12 @@ final class UploadAlbumImagesForm extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addMultiUpload('albumImages', 'Album Images')
-            ->addRule($this->form::MAX_LENGTH, 'You can upload max %d images.', 50)
-            ->addRule($this->form::IMAGE,"You can upload only images");
+        $this->form->addMultiUpload('albumImages', 'Upload album Images')
+            ->addRule($this->form::MAX_LENGTH, 'You can upload max %d images.', 22)
+            ->addRule($this->form::IMAGE, "You can upload only images");
         $this->form->addSubmit("submit", "Upload");
 
+        //var_dump($this->form);
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");
             try {

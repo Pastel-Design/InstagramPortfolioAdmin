@@ -3,8 +3,6 @@
 
 namespace app\controllers;
 
-
-use app\forms\FullSignUp;
 use app\forms\FullSignInForm;
 use app\models\SignManager;
 use app\router\Router;

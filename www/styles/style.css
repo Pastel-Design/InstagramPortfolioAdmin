@@ -65,6 +65,7 @@ a * :hover {
 }
 
 .images-container {
+  padding: 20px;
   display: flex;
   flex-flow: row wrap;
 }
@@ -86,6 +87,32 @@ a * :hover {
 
 .album-image {
   cursor: pointer;
+}
+
+.container {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.album-forms-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  border-bottom: #6e6e6e 2px solid;
+}
+
+.album-form-container {
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 50vw;
+  max-width: 500px;
+}
+
+td, th {
+  text-align: center !important;
 }
 
 .form-control-feedback {

@@ -49,7 +49,7 @@ class FileManager
      *
      * @param $upfileName
      *
-     * @return string
+     * @return string|void
      */
     static function uploadFileSingle($upfileName)
     {

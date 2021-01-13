@@ -4,8 +4,7 @@ namespace app\forms;
 
 require("../../vendor/autoload.php");
 
-use app\exceptions\SignException;
-use app\models\SignManager;
+use Exception;
 use Nette\Forms\Form;
 
 /**
@@ -13,7 +12,7 @@ use Nette\Forms\Form;
  *
  * @package app\forms
  */
-final class  FullSignInForm extends FormFactory
+final class UploadImageForm extends FormFactory
 {
 
     /**
@@ -26,7 +25,7 @@ final class  FullSignInForm extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getForm("SignIn");
+        $this->form = parent::getBootstrapForm("");
     }
 
     /**
@@ -36,21 +35,19 @@ final class  FullSignInForm extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addText('login', 'Login:')
-            ->setHtmlAttribute("placeholder", "Login *")
-            ->setRequired(true);
-        $this->form->addPassword('password', 'Password:')
-            ->setHtmlAttribute("placeholder", "Password *")
-            ->setRequired(true);
-
-        $this->form->addSubmit("submit", "Login");
+        $this->form->addText("imageTitle", "Image title")
+            ->setHtmlAttribute("placeholder", "Image title");
+        $this->form->addText("imageDescription", "Image description")
+            ->setHtmlAttribute("placeholder", "Image description");
+        $this->form->addUpload('imageFile', 'Upload new image')
+            ->addRule($this->form::IMAGE, "You can upload only images");
+        $this->form->addSubmit("submit", "Upload");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");
             try {
-                SignManager::SignIn($values["login"], $values["password"]);
-                $onSuccess();
-            } catch (SignException $exception) {
+                $onSuccess($values);
+            } catch (Exception $exception) {
                 $this->form->addError($exception->getMessage());
             }
         }

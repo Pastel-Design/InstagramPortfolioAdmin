@@ -2,9 +2,7 @@
 
 namespace app\models;
 
-use app\config\AuthorityConfig;
 use app\exceptions\SignException;
-use stdClass;
 
 /**
  * Manager SignManager
@@ -76,6 +74,9 @@ class SignManager
         return (DbManager::requestAffect("SELECT email FROM web_info WHERE email = ?", [$email]) === 1);
     }
 
+    /**
+     * @throws SignException
+     */
     static function checkAdmin()
     {
         if (session_status() != 2) {

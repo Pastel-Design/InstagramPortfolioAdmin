@@ -18,6 +18,7 @@ class UploadManager
     {
         $files = array();
         $filenames = array();
+        var_dump($values);
         try {
             foreach ($values as $file) {
                 /**
@@ -27,11 +28,8 @@ class UploadManager
                     case"jpeg":
                         $ext = "jpg";
                         break;
-                    case "png":
-                        $ext = "png";
-                        break;
-                    case "tiff":
-                        $ext = "tiff";
+                    default:
+                        $ext = $file->getImageFileExtension();
                         break;
                 }
                 array_push($files, ($filename = sha1_file($file->getTemporaryFile())).".".$ext);

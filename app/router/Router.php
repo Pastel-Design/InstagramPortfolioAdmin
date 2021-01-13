@@ -5,7 +5,7 @@ namespace app\router;
 require(__DIR__ . "/../../vendor/autoload.php");
 
 use app\config\DbConfig;
-use App\controllers\Controller;
+use app\controllers\Controller;
 use app\exceptions\SignException;
 use app\models\DbManager;
 use app\models\SignManager;
@@ -40,7 +40,9 @@ final class Router
             DbManager::connect(DbConfig::$host, DbConfig::$username, DbConfig::$pass, DbConfig::$database);
         } catch (PDOException $exception) {
             if ($parsedURL[0] != "error") {
-                $this->reroute("error/500");
+                echo("chyba db");
+                //var_dump($exception);
+                //$this->reroute("error/500");
             }
         }
         try {

@@ -2,10 +2,9 @@
 
 namespace app\models;
 
-require("../vendor/autoload.php");
+require("../../vendor/autoload.php");
 
 use app\config\ImageOptimizerConfig;
-use Exception;
 use Intervention\Image\ImageManagerStatic as Image;
 use Intervention\Image\Exception\NotWritableException;
 use RuntimeException;
@@ -29,7 +28,7 @@ class ImageManager
     static function defaultImage(string $imgURL)
     {
         try {
-            self::editImage($imgURL,$imgURL);
+            self::editImage($imgURL,$imgURL,ImageOptimizerConfig::$defaultImageWidth,ImageOptimizerConfig::$defaultImageHeight);
         } catch (NotWritableException $exception) {
             return new RuntimeException;
         }
@@ -47,17 +46,19 @@ class ImageManager
         $newURL = "images/thumbnail/" . array_reverse(explode("/", $imgURL))[0];
         $oldURL = $imgURL;
         try {
-            self::editImage($newURL,$oldURL);
+            self::editImage($newURL,$oldURL,ImageOptimizerConfig::$thumbnailWidth,ImageOptimizerConfig::$thumbnailHeight);
         } catch (NotWritableException $exception) {
             return new RuntimeException;
         }
     }
 
     /**
-     * @throws NotWritableException
-     * @param $imgURL
+     * @param $newURL
+     * @param $oldURL
+     * @param $targetWidth
+     * @param $targetHeight
      */
-    static function editImage($newURL,$oldURL)
+    static function editImage($newURL,$oldURL,$targetWidth,$targetHeight)
     {
         $img = Image::make($oldURL);
 
@@ -65,8 +66,8 @@ class ImageManager
         $width = $img->width();
         //na šířku
         if ($width > $height) {
-            if ($width > ImageOptimizerConfig::$defaultImageWidth) {
-                $img->resize(ImageOptimizerConfig::$defaultImageWidth, null, function ($constraint) {
+            if ($width > $targetWidth) {
+                $img->resize($targetWidth, null, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             } else {
@@ -74,8 +75,8 @@ class ImageManager
             }
         } //na výšku
         else {
-            if ($height > ImageOptimizerConfig::$defaultImageHeight) {
-                $img->resize(null, ImageOptimizerConfig::$defaultImageHeight, function ($constraint) {
+            if ($height > $targetHeight) {
+                $img->resize(null, $targetHeight, function ($constraint) {
                     $constraint->aspectRatio();
                 });
             } else {

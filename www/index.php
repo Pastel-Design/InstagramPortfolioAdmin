@@ -11,13 +11,15 @@ require("../vendor/autoload.php");
  */
 function autoloadFunction($class)
 {
-    $classname="../" . preg_replace("/[\\ ]+/", "/", $class) . ".php";
+    $classname="./../" . str_replace("\\","/",$class) . ".php";
+    var_dump($classname);
     if (is_readable($classname)) {
+        /** @noinspection PhpIncludeInspection */
         require($classname);
     }
 }
 spl_autoload_register("autoloadFunction");
-
+var_dump(phpversion());
 session_start();
 $router = new Router();
 $router->process(array($_SERVER['REQUEST_URI']));

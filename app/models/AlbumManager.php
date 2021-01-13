@@ -108,7 +108,8 @@ class AlbumManager
             $coverImage = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? ORDER BY id LIMIT 1", [$albumId]);
             DbManager::requestInsert("UPDATE album SET cover_photo=? WHERE id=?", [$coverImage, $albumId]);
         }
-
+        $currentNoPhotos=DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?",[$albumId]);
+        DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?",[($i+$currentNoPhotos),$albumId]);
     }
 
     /**
@@ -163,9 +164,26 @@ class AlbumManager
     /**
      * @param $imageId
      * @param $albumId
+     *
+     * @return Exception|false|int|PDOException
      */
     public function setCoverPhoto($imageId, $albumId)
     {
-        DbManager::requestAffect("UPDATE album SET cover_photo=? WHERE id=?",[$imageId,$albumId]);
+        return DbManager::requestAffect("UPDATE album SET cover_photo=? WHERE id=?",[$imageId,$albumId]);
+    }
+
+    public function deleteImage($imageId, $albumId)
+    {
+        if(DbManager::requestUnit("SELECT cover_photo FROM album WHERE id = ?",[$albumId])==$imageId){
+            $newCover = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? AND id <> ? ORDER BY id LIMIT 1",[$albumId,$imageId]);
+            $this->setCoverPhoto($newCover,$albumId);
+            DbManager::requestAffect("DELETE FROM image WHERE id = ?",[$imageId]);
+        }else{
+            DbManager::requestAffect("DELETE FROM image WHERE id = ?",[$imageId]);
+            $newCover=null;
+        }
+        $currentNoPhotos=DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?",[$albumId]);
+        DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?",[($currentNoPhotos-1),$albumId]);
+        return $newCover;
     }
 }

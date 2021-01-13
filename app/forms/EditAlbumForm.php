@@ -2,7 +2,7 @@
 
 namespace app\forms;
 
-require("../vendor/autoload.php");
+require("../../vendor/autoload.php");
 
 use Exception;
 use Nette\Forms\Form;

@@ -3,15 +3,17 @@
     {ifset $message}
         {$message}
     {/ifset}
-    <div class="container">
-        {$editForm->render()}
-    </div>
+    <div class="album-forms-container">
+        <div class="album-form-container">
+            {$editForm->render()}
+        </div>
 
-    <div class="container">
-        {$uploadForm->render()}
+        <div class="album-form-container">
+            {$uploadForm->render()}
+        </div>
     </div>
     {ifset $images}
-        <div class="container images-container" >
+        <div class="container images-container">
             {foreach $images as $image}
                 <div class="image-container{if $image["cover_photo"]} cover-photo{/if}" image-id="{$image["id"]}">
                     <img src="images/fullview/{$image["filename"]}" width="250" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image">
@@ -20,7 +22,9 @@
                     <label>Description:</label>
                     <input type="text" class="form-control" name="description" image-id="{$image["id"]}" value="{$image["description"]}">
                     <button class="btn btn-warning edit-image-btn" image-id="{$image["id"]}">Edit</button>
-                    <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}">Remove</button>
+                    <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}" album-id="{$albumId}">
+                        Remove
+                    </button>
                 </div>
             {/foreach}
         </div>

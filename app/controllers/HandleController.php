@@ -2,12 +2,7 @@
 
 namespace app\controllers;
 
-use app\exceptions\UserException;
 use app\models\AlbumManager;
-use app\models\CartManager;
-use app\models\ProductManager;
-use app\models\UserManager;
-use app\router\Router;
 use Exception;
 
 /**
@@ -81,6 +76,8 @@ class HandleController extends Controller
             } elseif (array_key_exists("title", $data) && array_key_exists("description", $data)) {
                 $this->data["response"] = $this->albumManager->editImage($data, $imageId);
                 http_response_code(200);
+            } else {
+                http_response_code(404);
             }
         } else {
             http_response_code(404);
@@ -98,6 +95,25 @@ class HandleController extends Controller
         } elseif (array_key_exists("albumId", $gets) && array_key_exists("imageId", $gets)) {
             $this->data["response"] = $this->albumManager->setCoverPhoto($gets["imageId"], $gets["albumId"]);
             http_response_code(200);
+        } else {
+            http_response_code(404);
+        }
+    }
+
+    public function deleteImage($params, $gets)
+    {
+        if (count($gets) != 2) {
+            http_response_code(404);
+        } elseif (array_key_exists("albumId", $gets) && array_key_exists("imageId", $gets)) {
+            $newCover=$this->albumManager->deleteImage($gets["imageId"], $gets["albumId"]);
+            if($newCover){
+                $this->data["response"]=$newCover;
+            }else{
+                $this->data["response"]=true;
+            }
+            http_response_code(200);
+        } else {
+            http_response_code(404);
         }
     }
 }

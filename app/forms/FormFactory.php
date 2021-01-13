@@ -5,7 +5,7 @@ namespace app\forms;
 
 
 use Nette\Forms\Form;
-
+use Nette\Forms\Controls\Checkbox as Checkbox;
 /**
  * Form FormFactory
  *
@@ -39,7 +39,7 @@ abstract class FormFactory
         $renderer->wrappers['control']['textarea'] = 'form-control';
         $renderer->wrappers['control']['.email'] = 'form-control';
         $renderer->wrappers['control']['.number'] = 'form-control';
-        $renderer->wrappers['control']['.submit'] = 'btn btn-info';
+        $renderer->wrappers['control']['.submit'] = 'btn btn-success';
         $renderer->wrappers['control']['.button'] = 'btn btn-success';
         $renderer->wrappers['control']['.select'] = 'form-control';
         $renderer->wrappers['control']['.file'] = 'form-control-file';
@@ -60,7 +60,7 @@ abstract class FormFactory
                 $control->getControlPrototype()->addClass('form-control-file');
 
             } elseif (in_array($type, ['checkbox', 'radio'], true)) {
-                if ($control instanceof Nette\Forms\Controls\Checkbox) {
+                if ($control instanceof Checkbox) {
                     $control->getLabelPrototype()->addClass('form-check-label');
                 } else {
                     $control->getItemLabelPrototype()->addClass('form-check-label');
