@@ -27,15 +27,16 @@ class AlbumManager
      */
     public function createAlbum($values)
     {
-        var_dump($values);
-
+        if (($order = DbManager::requestUnit("SELECT `order` FROM album ORDER BY `order` DESC LIMIT 1")) == null) {
+            $order = 0;
+        }
         if (DbManager::requestAffect("SELECT title FROM album WHERE title=?", [$values["albumTitle"]]) > 0) {
             throw new Exception("Name already exists");
         }
         return DbManager::requestInsert('
             INSERT INTO album (id, title, dash_title, description, keywords, no_photos, added, edited, `order`, visible, cover_photo) 
-            VALUES(Null,?,?,?,?,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,0,1,Null)
-            ', [$values["albumTitle"], $values["albumDashtitle"], $values["albumDescription"], $values["albumKeywords"]]);
+            VALUES(Null,?,?,?,?,0,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,1,Null)
+            ', [$values["albumTitle"], $values["albumDashtitle"], $values["albumDescription"], $values["albumKeywords"],$order+1]);
 
 
     }
