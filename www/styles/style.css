@@ -206,4 +206,21 @@ td, th {
   bottom: 0;
 }
 
+.nav-link {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.nav-item {
+  margin-right: 20px;
+}
+
+.title-container {
+  display: flex;
+  width: 100%;
+  flex-flow: row;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
 /*# sourceMappingURL=style.css.map */
