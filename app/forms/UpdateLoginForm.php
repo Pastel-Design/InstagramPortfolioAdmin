@@ -1,18 +1,13 @@
 <?php
 
+
 namespace app\forms;
 
-require("../vendor/autoload.php");
 
 use Exception;
 use Nette\Forms\Form;
 
-/**
- * Form FullSignInForm
- *
- * @package app\forms
- */
-final class  NewAlbumForm extends FormFactory
+class UpdateLoginForm extends FormFactory
 {
 
     /**
@@ -25,7 +20,7 @@ final class  NewAlbumForm extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getBootstrapForm("NewAlbumForm");
+        $this->form = parent::getBootstrapForm("UpdateLoginForm");
     }
 
     /**
@@ -35,17 +30,11 @@ final class  NewAlbumForm extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addText('albumTitle', 'Album title:')
-            ->setHtmlAttribute("placeholder", "album title")
+        $this->form->addPassword("login", "Password for administration of web:")
             ->setRequired(true);
-        $this->form->addText('albumDescription', 'Album description:')
-            ->setHtmlAttribute("placeholder", "album description *")
-            ->setRequired(true);
-        $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setHtmlAttribute("placeholder", "album keywords *")
-            ->setRequired(true);
-        $this->form->addSubmit("submit", "Create");
+        $this->form->addSubmit("submit", "Upload");
 
+        //var_dump($this->form);
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");
             try {

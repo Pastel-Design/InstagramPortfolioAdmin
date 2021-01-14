@@ -1,8 +1,9 @@
 {extends "../@layout.latte"}
 {block content}
-    {ifset $message}
-        {$message}
-    {/ifset}
+    <div class="toggler">
+        <i class="fas fa-2x fa-toggle-off" id="darkmodeToggleButton"></i>
+        <span>Instagram<br>layout</span>
+    </div>
     <div class="album-forms-container">
         <div class="album-form-container">
             {$editForm->render()}
@@ -12,21 +13,39 @@
             {$uploadForm->render()}
         </div>
     </div>
+    <div class="default-container">
     {ifset $images}
-        <div class="container images-container">
+        <div class="container images-container" id="images-container">
             {foreach $images as $image}
                 <div class="image-container{if $image["cover_photo"]} cover-photo{/if}" image-id="{$image["id"]}">
-                    <img src="images/fullview/{$image["filename"]}" width="250" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image">
+                    <img src="images/fullview/{$image["filename"]}" height="350" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image image">
                     <label>Title:</label>
                     <input type="text" class="form-control" name="title" image-id="{$image["id"]}" value="{$image["title"]}">
                     <label>Description:</label>
                     <input type="text" class="form-control" name="description" image-id="{$image["id"]}" value="{$image["description"]}">
-                    <button class="btn btn-warning edit-image-btn" image-id="{$image["id"]}">Edit</button>
-                    <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}" album-id="{$albumId}">
-                        Remove
-                    </button>
+                    <div class="buttons-container">
+                        <button class="btn btn-warning edit-image-btn" image-id="{$image["id"]}">Edit</button>
+                        <button class="btn btn-info reorder-up" album-id="{$albumId}" image-id="{$image["id"]}"><i class="fas fa-angle-up"></i></button>
+                    </div>
+                    <div class="buttons-container">
+                        <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}" album-id="{$albumId}">Remove</button>
+                        <button class="btn btn-info reorder-down" album-id="{$albumId}" image-id="{$image["id"]}"><i class="fas fa-angle-down"></i></button>
+                    </div>
                 </div>
             {/foreach}
         </div>
     {/ifset}
+    </div>
+    <div class="instagram-container hidden">
+        <img src="images/fullview/igmockup.png" width="935">
+        {ifset $images}
+            <div id="instagram-container">
+                {foreach $images as $image}
+                    <div class="grid-image" image-id="{$image["id"]}" style="background-image: url('images/thumbnail/{$image["filename"]}')">
+
+                    </div>
+                {/foreach}
+            </div>
+        {/ifset}
+    </div>
 {/block}

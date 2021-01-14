@@ -12,7 +12,7 @@ use Nette\Forms\Form;
  *
  * @package app\forms
  */
-final class  NewAlbumForm extends FormFactory
+final class LandingPageForm extends FormFactory
 {
 
     /**
@@ -25,7 +25,7 @@ final class  NewAlbumForm extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getBootstrapForm("NewAlbumForm");
+        $this->form = parent::getBootstrapForm("LandingPageForm");
     }
 
     /**
@@ -35,16 +35,9 @@ final class  NewAlbumForm extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addText('albumTitle', 'Album title:')
-            ->setHtmlAttribute("placeholder", "album title")
-            ->setRequired(true);
-        $this->form->addText('albumDescription', 'Album description:')
-            ->setHtmlAttribute("placeholder", "album description *")
-            ->setRequired(true);
-        $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setHtmlAttribute("placeholder", "album keywords *")
-            ->setRequired(true);
-        $this->form->addSubmit("submit", "Create");
+        $this->form->addUpload('filename', 'Upload new landing page image')
+            ->addRule($this->form::IMAGE, "You can upload only images");
+        $this->form->addSubmit("submit", "Upload");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");

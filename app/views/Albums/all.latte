@@ -14,7 +14,7 @@
         </thead>
         <tbody>
         {foreach $albums as $album}
-            <tr>
+            <tr album-id="{$album["id"]}">
                 <td><img src="images/thumbnail/{$album["cover_photo"]}" width="150"></td>
                 <th>{$album["id"]}</th>
                 <td>{$album["title"]}</td>

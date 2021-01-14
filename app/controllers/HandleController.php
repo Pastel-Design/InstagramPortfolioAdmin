@@ -74,6 +74,8 @@ class HandleController extends Controller
             if (count($data) != 2) {
                 http_response_code(404);
             } elseif (array_key_exists("title", $data) && array_key_exists("description", $data)) {
+                $data["description"] = ($data["description"] == "" ? null : $data["description"]);
+                $data["title"] = ($data["title"] == "" ? null : $data["title"]);
                 $this->data["response"] = $this->albumManager->editImage($data, $imageId);
                 http_response_code(200);
             } else {
@@ -100,17 +102,58 @@ class HandleController extends Controller
         }
     }
 
+    /**
+     * @param $params
+     * @param $gets
+     */
     public function deleteImage($params, $gets)
     {
         if (count($gets) != 2) {
             http_response_code(404);
         } elseif (array_key_exists("albumId", $gets) && array_key_exists("imageId", $gets)) {
-            $newCover=$this->albumManager->deleteImage($gets["imageId"], $gets["albumId"]);
-            if($newCover){
-                $this->data["response"]=$newCover;
-            }else{
-                $this->data["response"]=true;
+            $newCover = $this->albumManager->deleteImage($gets["imageId"], $gets["albumId"]);
+            if ($newCover) {
+                $this->data["response"] = $newCover;
+            } else {
+                $this->data["response"] = true;
             }
+            http_response_code(200);
+        } else {
+            http_response_code(404);
+        }
+    }
+
+    /**
+     * @param $params
+     * @param $gets
+     */
+    public function deleteAlbum($params, $gets)
+    {
+        if (count($gets) != 1) {
+            http_response_code(404);
+        } elseif (array_key_exists("albumId", $gets)) {
+            $this->albumManager->deleteAlbum($gets["albumId"]);
+            $this->data["response"] = true;
+            http_response_code(200);
+        } else {
+            http_response_code(404);
+        }
+    }
+
+    /**
+     * @param $params
+     * @param $gets
+     */
+    public function reorderAlbum($params, $gets)
+    {
+        if (count($gets) != 1) {
+            http_response_code(404);
+        } elseif (array_key_exists("imagesOrder", $gets)) {
+            $imagesOrder = array();
+            for ($i = 0; $i < sizeof($gets["imagesOrder"]); $i += 2) {
+                $imagesOrder[($i / 2)] = [$gets["imagesOrder"][$i], $gets["imagesOrder"][($i + 1)]];
+            }
+            $this->data["response"] = $this->albumManager->reorderAlbum($imagesOrder);;
             http_response_code(200);
         } else {
             http_response_code(404);

@@ -1,4 +1,49 @@
 {extends "../@layout.latte"}
 {block content}
+    <div class="toggler">
+        <i class="fas fa-2x fa-toggle-off" id="darkmodeToggleButton"></i>
+        <span>Instagram<br>layout</span>
+    </div>
+    <div class="container new-image-form-container">
+        {$newImageForm->render()}
+    </div>
+    <div class="default-container">
+        {ifset $images}
+            <div class="container images-container" id="images-container">
+                {foreach $images as $image}
+                    <div class="image-container" image-id="{$image["id"]}">
+                        <img src="images/fullview/{$image["filename"]}" height="350" image-id="{$image["id"]}" class="album-image image">
+                        <label>Title:</label>
+                        <input type="text" class="form-control" name="title" image-id="{$image["id"]}" value="{$image["title"]}">
+                        <label>Description:</label>
+                        <input type="text" class="form-control" name="description" image-id="{$image["id"]}" value="{$image["description"]}">
+                        <div class="buttons-container">
+                            <button class="btn btn-warning edit-image-btn" image-id="{$image["id"]}">Edit</button>
+                            <button class="btn btn-info reorder-up" image-id="{$image["id"]}">
+                                <i class="fas fa-angle-up"></i></button>
+                        </div>
+                        <div class="buttons-container">
+                            <button class="btn btn-danger delete-image-btn" image-id="{$image["id"]}" album-id="null">
+                                Remove
+                            </button>
+                            <button class="btn btn-info reorder-down" image-id="{$image["id"]}">
+                                <i class="fas fa-angle-down"></i></button>
+                        </div>
+                    </div>
+                {/foreach}
+            </div>
+        {/ifset}
+    </div>
+    <div class="instagram-container hidden">
+        <img src="images/fullview/igmockup.png" width="935">
+        {ifset $images}
+            <div id="instagram-container">
+                {foreach $images as $image}
+                    <div class="grid-image" image-id="{$image["id"]}" style="background-image: url('images/thumbnail/{$image["filename"]}')">
 
+                    </div>
+                {/foreach}
+            </div>
+        {/ifset}
+    </div>
 {/block}

@@ -213,8 +213,8 @@ class FileManager
                 )) {
                     throw new RuntimeException('Failed to move uploaded file.', 1);
                 }
-                ImageManager::defaultImage($fileNameWDir);
-                ImageManager::makeThumbnail($fileNameWDir);
+                ImageFileManager::defaultImage($fileNameWDir);
+                ImageFileManager::makeThumbnail($fileNameWDir);
                 return [0, 'File is uploaded successfully.'];
             } catch (RuntimeException $exception) {
                 return [$exception->getCode(), $exception->getMessage()];
@@ -232,8 +232,8 @@ class FileManager
                 )) {
                     throw new RuntimeException('Failed to move uploaded file.', 1);
                 }
-                ImageManager::defaultImage($fileNameWDir);
-                ImageManager::makeThumbnail($fileNameWDir);
+                ImageFileManager::defaultImage($fileNameWDir);
+                ImageFileManager::makeThumbnail($fileNameWDir);
                 return [0, 'File is uploaded successfully.'];
             } catch (RuntimeException $exception) {
                 return [$exception->getCode(), $exception->getMessage()];

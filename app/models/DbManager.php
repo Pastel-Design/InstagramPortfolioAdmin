@@ -172,12 +172,8 @@ class DbManager
      */
     public static function requestAffect(string $sql, $params = array())
     {
-        try {
-            $result = self::$connection->prepare($sql);
-            $result->execute($params);
-            return $result->rowCount();
-        } catch (PDOException $exception) {
-            return $exception;
-        }
+        $result = self::$connection->prepare($sql);
+        $result->execute($params);
+        return $result->rowCount();
     }
 }

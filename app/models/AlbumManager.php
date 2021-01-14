@@ -16,7 +16,7 @@ class AlbumManager
      */
     public function albumExists($albumTitle)
     {
-        return DbManager::requestAffect("SELECT title FROM album WHERE title=?", [$albumTitle]) == 1;
+        return DbManager::requestAffect("SELECT dash_title FROM album WHERE dash_title=?", [$albumTitle]) == 1;
     }
 
     /**
@@ -99,17 +99,20 @@ class AlbumManager
     public function uploadImages(array $images, string $albumTitle): void
     {
         $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$albumTitle]);
+        if (($order = DbManager::requestUnit("SELECT `order` FROM image WHERE album_id = ? ORDER BY `order` DESC LIMIT 1", [$albumId])) == null) {
+            $order = 0;
+        }
         for ($i = 0; $i < sizeof($images["filenames"]); $i++) {
             DbManager::requestInsert("INSERT INTO image(filename, data_type, added, edited, title, description, `order`, album_id) 
-                                      VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,'',0,?)",
-                [$images["filenames"][$i], explode(".", $images["filenames"][$i])[1], explode(".", $images["file-names"][$i])[0], $albumId]);
+                                      VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,null,null,?,?)",
+                [$images["filenames"][$i], explode(".", $images["filenames"][$i])[1], $order + $i + 1, $albumId]);
         }
         if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id=?", [$albumId]) == Null) {
             $coverImage = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? ORDER BY id LIMIT 1", [$albumId]);
             DbManager::requestInsert("UPDATE album SET cover_photo=? WHERE id=?", [$coverImage, $albumId]);
         }
-        $currentNoPhotos=DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?",[$albumId]);
-        DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?",[($i+$currentNoPhotos),$albumId]);
+        $currentNoPhotos = DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?", [$albumId]);
+        DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?", [($i + $currentNoPhotos), $albumId]);
     }
 
     /**
@@ -121,7 +124,7 @@ class AlbumManager
     {
         $newImages = array();
         $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$title]);
-        $images = DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ?", [$albumId]);
+        $images = DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ? ORDER BY `order`", [$albumId]);
         foreach ($images as $image) {
             if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id=?", [$albumId]) == $image["id"]) {
                 $image["cover_photo"] = true;
@@ -169,21 +172,64 @@ class AlbumManager
      */
     public function setCoverPhoto($imageId, $albumId)
     {
-        return DbManager::requestAffect("UPDATE album SET cover_photo=? WHERE id=?",[$imageId,$albumId]);
+        return DbManager::requestAffect("UPDATE album SET cover_photo=? WHERE id=?", [$imageId, $albumId]);
     }
 
+    /**
+     * @param $imageId
+     * @param $albumId
+     *
+     * @return mixed|void|null
+     */
     public function deleteImage($imageId, $albumId)
     {
-        if(DbManager::requestUnit("SELECT cover_photo FROM album WHERE id = ?",[$albumId])==$imageId){
-            $newCover = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? AND id <> ? ORDER BY id LIMIT 1",[$albumId,$imageId]);
-            $this->setCoverPhoto($newCover,$albumId);
-            DbManager::requestAffect("DELETE FROM image WHERE id = ?",[$imageId]);
-        }else{
-            DbManager::requestAffect("DELETE FROM image WHERE id = ?",[$imageId]);
-            $newCover=null;
+        $filename = DbManager::requestUnit("SELECT filename FROM image WHERE id = ?", [$imageId]);
+        if ($albumId == null) {
+            DbManager::requestAffect("DELETE FROM image WHERE id = ?", [$imageId]);
+            $newCover = null;
+        } else {
+
+            if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id = ?", [$albumId]) == $imageId) {
+                $newCover = DbManager::requestUnit("SELECT id FROM image WHERE album_id = ? AND id <> ? ORDER BY id LIMIT 1", [$albumId, $imageId]);
+                $this->setCoverPhoto($newCover, $albumId);
+                DbManager::requestAffect("DELETE FROM image WHERE id = ?", [$imageId]);
+            } else {
+                DbManager::requestAffect("DELETE FROM image WHERE id = ?", [$imageId]);
+                $newCover = null;
+            }
+            $currentNoPhotos = DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?", [$albumId]);
+            DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?", [($currentNoPhotos - 1), $albumId]);
         }
-        $currentNoPhotos=DbManager::requestUnit("SELECT no_photos FROM album WHERE id=?",[$albumId]);
-        DbManager::requestInsert("UPDATE album SET no_photos = ? WHERE id=?",[($currentNoPhotos-1),$albumId]);
+        unlink("images/fullview/" . $filename);
+        unlink("images/thumbnail/" . $filename);
         return $newCover;
+    }
+
+    /**
+     * @param $albumId
+     */
+    public function deleteAlbum($albumId)
+    {
+        $images = DbManager::requestMultiple("SELECT filename,id FROM image WHERE album_id = ?", [$albumId]);
+        $this->setCoverPhoto(null, $albumId);
+        foreach ($images as $image) {
+            DbManager::requestAffect("DELETE FROM image WHERE id = ?", [$image["id"]]);
+            unlink("images/fullView/" . $image["filename"]);
+            unlink("images/thumbnail/" . $image["filename"]);
+        }
+        DbManager::requestAffect("DELETE FROM album WHERE id = ?", [$albumId]);
+    }
+
+    public function reorderAlbum($imagesOrder)
+    {
+        try {
+            foreach ($imagesOrder as $imageOrder) {
+                DbManager::requestAffect("UPDATE image SET `order` = ? WHERE id = ?", [$imageOrder[0], $imageOrder[1]]);
+            }
+        } catch (PDOException $exception) {
+            return false;
+        }
+        return true;
+
     }
 }

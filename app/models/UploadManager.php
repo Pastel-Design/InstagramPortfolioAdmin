@@ -18,13 +18,12 @@ class UploadManager
     {
         $files = array();
         $filenames = array();
-        var_dump($values);
         try {
             foreach ($values as $file) {
                 /**
                  * @var FileUpload $file
                  */
-                switch($file->getImageFileExtension()){
+                switch ($file->getImageFileExtension()) {
                     case"jpeg":
                         $ext = "jpg";
                         break;
@@ -32,8 +31,8 @@ class UploadManager
                         $ext = $file->getImageFileExtension();
                         break;
                 }
-                array_push($files, ($filename = sha1_file($file->getTemporaryFile())).".".$ext);
-                array_push($filenames,$file->getSanitizedName());
+                array_push($files, ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext);
+                array_push($filenames, $file->getSanitizedName());
                 $fileNameWDir = sprintf(
                     'images/fullView/%s.%s',
                     $filename,
@@ -46,18 +45,56 @@ class UploadManager
                 )) {
                     throw new RuntimeException();
                 }
-                ImageManager::defaultImage($fileNameWDir);
-                ImageManager::makeThumbnail($fileNameWDir);
+                ImageFileManager::defaultImage($fileNameWDir);
+                ImageFileManager::makeThumbnail($fileNameWDir);
             }
         } catch (RuntimeException $exception) {
-            if(!empty($files)){
-                foreach ($files as $filename){
-                    unlink("images/fullView/".$filename);
-                    unlink("images/thumbnail/".$filename);
+            if (!empty($files)) {
+                foreach ($files as $filename) {
+                    unlink("images/fullView/" . $filename);
+                    unlink("images/thumbnail/" . $filename);
                 }
             }
             return false;
         }
-        return ["filenames"=>$files,"file-names"=>$filenames];
+        return ["filenames" => $files, "file-names" => $filenames];
+    }
+
+    public static function UploadSingle($file)
+    {
+        $fileName="";
+        try {
+            /**
+             * @var FileUpload $file
+             */
+            switch ($file->getImageFileExtension()) {
+                case"jpeg":
+                    $ext = "jpg";
+                    break;
+                default:
+                    $ext = $file->getImageFileExtension();
+                    break;
+            }
+            $fileName = ($filename=hash("sha256", $file->getTemporaryFile())) . "." . $ext;
+            $fileNameWDir = sprintf(
+                'images/fullView/%s.%s',
+                $filename,
+                $ext
+            );
+
+            if (!move_uploaded_file(
+                $file->getTemporaryFile(),
+                $fileNameWDir
+            )) {
+                throw new RuntimeException();
+            }
+            ImageFileManager::defaultImage($fileNameWDir);
+            ImageFileManager::makeThumbnail($fileNameWDir);
+            return $fileName;
+        } catch (RuntimeException $exception) {
+            @unlink("images/fullView/" . $fileName);
+            @unlink("images/thumbnail/" . $fileName);
+            return false;
+        }
     }
 }

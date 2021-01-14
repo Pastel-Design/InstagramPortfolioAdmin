@@ -1,0 +1,14 @@
+.profile-info-container{
+  padding: 20px;
+}
+.landing-page-container{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+.landing-page-mockup{
+max-height: 50vh;
+}
+.sixteen-nine {
+  @include aspect-ratio(16, 9);
+}

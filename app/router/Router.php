@@ -87,12 +87,13 @@ final class Router
         }
         $return["parsedGET"] = array();
         if (isset($url["query"])) {
-            $parsedGET = explode("&", $url["query"]);
+            parse_str($url["query"],$return["parsedGET"]);
+            /*$parsedGET = explode("&", $url["query"]);
 
             foreach ($parsedGET as $get) {
                 $get = explode("=", $get);
                 $return["parsedGET"][$get[0]] = $get[1];
-            }
+            }*/
         }
         return $return;
     }

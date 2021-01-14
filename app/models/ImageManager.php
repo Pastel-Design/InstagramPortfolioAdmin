@@ -1,88 +1,39 @@
 <?php
 
+
 namespace app\models;
 
-require("../../vendor/autoload.php");
 
-use app\config\ImageOptimizerConfig;
-use Intervention\Image\ImageManagerStatic as Image;
-use Intervention\Image\Exception\NotWritableException;
-use RuntimeException;
+use Exception;
+use PDOException;
 
-
-/**
- * Manager ImageManager
- * pro více info http://image.intervention.io/getting_started/introduction
- *
- * @package app\models
- */
 class ImageManager
 {
     /**
-     * Edits image to default parameters defined in ImageOptimizerConfig
+     * @param $formValues
+     * @param $filename
      *
-     * @param string $imgURL
-     *
-     * @return RuntimeException|void
+     * @return Exception|false|int|PDOException
      */
-    static function defaultImage(string $imgURL)
+    public function uploadImage($formValues, $filename)
     {
-        try {
-            self::editImage($imgURL,$imgURL,ImageOptimizerConfig::$defaultImageWidth,ImageOptimizerConfig::$defaultImageHeight);
-        } catch (NotWritableException $exception) {
-            return new RuntimeException;
+        if (($order = DbManager::requestUnit("SELECT `order` FROM image WHERE album_id IS NULL ORDER BY `order` DESC LIMIT 1")) == null) {
+            $order = 0;
         }
+        $formValues["imageDescription"] = ($formValues["imageDescription"] == "" ? null : $formValues["imageDescription"]);
+        $formValues["imageTitle"] = ($formValues["imageTitle"] == "" ? null : $formValues["imageTitle"]);
+        return DbManager::requestAffect('
+            INSERT INTO image(filename, data_type, added, edited, title, description, `order`, album_id) 
+            VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,?,?,null)',
+            [$filename, explode(".", $filename)[1], $formValues["imageTitle"], $formValues["imageDescription"], $order]);
     }
 
     /**
-     * Makes thumbnail version of image, by defined resolution in ImageOptimizerConfig
-     *
-     * @param string $imgURL
-     *
-     * @return RuntimeException|void
+     * @return array|void
      */
-    static function makeThumbnail(string $imgURL)
-    {
-        $newURL = "images/thumbnail/" . array_reverse(explode("/", $imgURL))[0];
-        $oldURL = $imgURL;
-        try {
-            self::editImage($newURL,$oldURL,ImageOptimizerConfig::$thumbnailWidth,ImageOptimizerConfig::$thumbnailHeight);
-        } catch (NotWritableException $exception) {
-            return new RuntimeException;
-        }
-    }
 
-    /**
-     * @param $newURL
-     * @param $oldURL
-     * @param $targetWidth
-     * @param $targetHeight
-     */
-    static function editImage($newURL,$oldURL,$targetWidth,$targetHeight)
+    public function getAllImages()
     {
-        $img = Image::make($oldURL);
-
-        $height = $img->height();
-        $width = $img->width();
-        //na šířku
-        if ($width > $height) {
-            if ($width > $targetWidth) {
-                $img->resize($targetWidth, null, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-            } else {
-                $img->save($newURL);
-            }
-        } //na výšku
-        else {
-            if ($height > $targetHeight) {
-                $img->resize(null, $targetHeight, function ($constraint) {
-                    $constraint->aspectRatio();
-                });
-            } else {
-                $img->save($newURL);
-            }
-        }
-        $img->save($newURL);
+        return DbManager::requestMultiple("SELECT * FROM image WHERE album_id IS NULL ORDER BY `order`");
     }
 }

@@ -2,6 +2,13 @@
 
 namespace app\controllers;
 
+use app\forms\UploadImageForm;
+use app\models\DbManager;
+use app\models\ImageManager;
+use app\models\UploadManager;
+use app\router\Router;
+use Exception;
+
 /**
  * Controller AlbumController
  *
@@ -9,9 +16,12 @@ namespace app\controllers;
  */
 class ImagesController extends Controller
 {
+    private ImageManager $imageManager;
+
     public function __construct()
     {
         parent::__construct();
+        $this->imageManager = new ImageManager();
     }
 
     /**
@@ -24,6 +34,16 @@ class ImagesController extends Controller
      */
     public function process(array $params, array $gets = null)
     {
+        $images = $this->imageManager->getAllImages();
+        $uploadImageFactory = new UploadImageForm();
+        $this->data["newImageForm"] = $uploadImageFactory->create(function ($values) {
+            var_dump($values);
+            if ($image = UploadManager::UploadSingle($values["imageFile"])) {
+                $this->imageManager->uploadImage($values,$image);
+            }
+            Router::reroute("images");
+        });
+        $this->data["images"] = $images;
         $this->head['page_title'] = "";
         $this->head['page_keywords'] = "";
         $this->head['page_description'] = "";
