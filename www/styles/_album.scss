@@ -106,12 +106,14 @@ td, th {
 .grid-image {
   width: 293px;
   height: 293px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  object-fit: cover;
   margin-bottom: 28px;
 }
 
 .hidden {
   display: none;
+}
+.image{
+  margin-top: auto;
+  margin-bottom: auto;
 }

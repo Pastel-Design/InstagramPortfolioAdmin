@@ -159,4 +159,38 @@ class HandleController extends Controller
             http_response_code(404);
         }
     }
+    /**
+     * @param $params
+     * @param $gets
+     */
+    public function reorderAlbums($params, $gets)
+    {
+        if (count($gets) != 1) {
+            http_response_code(404);
+        } elseif (array_key_exists("albumsOrder", $gets)) {
+            $albumsOrder = array();
+            for ($i = 0; $i < sizeof($gets["albumsOrder"]); $i += 2) {
+                $albumsOrder[($i / 2)] = [$gets["albumsOrder"][$i], $gets["albumsOrder"][($i + 1)]];
+            }
+            $this->data["response"] = $this->albumManager->reorderAlbums($albumsOrder);;
+            http_response_code(200);
+        } else {
+            http_response_code(404);
+        }
+    }
+    /**
+     * @param $params
+     * @param $gets
+     */
+    public function sessionLayoutToggle($params, $gets)
+    {
+        if (count($gets) != 1) {
+            http_response_code(404);
+        } elseif (array_key_exists("value", $gets)) {
+            $_SESSION["igLayout"] = $gets["value"]==="true";
+            http_response_code(200);
+        } else {
+            http_response_code(404);
+        }
+    }
 }

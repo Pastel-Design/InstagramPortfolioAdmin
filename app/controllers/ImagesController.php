@@ -43,6 +43,12 @@ class ImagesController extends Controller
             }
             Router::reroute("images");
         });
+        if (isset($_SESSION["igLayout"])) {
+            $igLayout = $_SESSION["igLayout"];
+        } else {
+            $igLayout = ($_SESSION["igLayout"] = false);
+        }
+        $this->data["igLayout"] = $igLayout;
         $this->data["images"] = $images;
         $this->head['page_title'] = "";
         $this->head['page_keywords'] = "";

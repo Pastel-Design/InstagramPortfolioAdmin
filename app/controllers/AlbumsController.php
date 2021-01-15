@@ -118,6 +118,12 @@ class AlbumsController extends Controller
             }
             Router::reroute("albums/edit/" . $title);
         });
+        if (isset($_SESSION["igLayout"])) {
+            $igLayout = $_SESSION["igLayout"];
+        } else {
+            $igLayout = ($_SESSION["igLayout"] = false);
+        }
+        $this->data["igLayout"] = $igLayout;
         $this->data["albumId"] = $album["id"];
         $this->data["images"] = $images;
         $this->data["album"] = $album;

@@ -78,7 +78,7 @@ class AlbumManager
      */
     public function getAllAlbums()
     {
-        $albums = DbManager::requestMultiple("SELECT id,title,dash_title,cover_photo,no_photos,visible FROM album");
+        $albums = DbManager::requestMultiple("SELECT id,title,dash_title,cover_photo,no_photos,visible FROM album ORDER BY `order`");
         $newAlbums = array();
         foreach ($albums as $album) {
             if ($album["cover_photo"] == Null) {
@@ -226,6 +226,18 @@ class AlbumManager
         try {
             foreach ($imagesOrder as $imageOrder) {
                 DbManager::requestAffect("UPDATE image SET `order` = ? WHERE id = ?", [$imageOrder[0], $imageOrder[1]]);
+            }
+        } catch (PDOException $exception) {
+            return false;
+        }
+        return true;
+
+    }
+    public function reorderAlbums($albumsOrder)
+    {
+        try {
+            foreach ($albumsOrder as $albumOrder) {
+                DbManager::requestAffect("UPDATE album SET `order` = ? WHERE id = ?", [$albumOrder[0], $albumOrder[1]]);
             }
         } catch (PDOException $exception) {
             return false;
