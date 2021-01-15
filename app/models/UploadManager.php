@@ -62,7 +62,7 @@ class UploadManager
 
     public static function UploadSingle($file)
     {
-        $fileName="";
+        $fileName = "";
         try {
             /**
              * @var FileUpload $file
@@ -75,7 +75,7 @@ class UploadManager
                     $ext = $file->getImageFileExtension();
                     break;
             }
-            $fileName = ($filename=hash("sha256", $file->getTemporaryFile())) . "." . $ext;
+            $fileName = ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext;
             $fileNameWDir = sprintf(
                 'images/fullView/%s.%s',
                 $filename,
@@ -96,5 +96,31 @@ class UploadManager
             @unlink("images/thumbnail/" . $fileName);
             return false;
         }
+    }
+
+    /**
+     * function for uploading from folder, do not use!!!
+     *
+     * @param $file
+     * @param $album
+     *
+     * @internal
+     *
+     * @return string
+     */
+    private function uploadFromFolder($file, $album)
+    {
+        $ext = strtolower(array_reverse(explode(".", $file))[0]);
+        $fileName = ($filename = hash("sha256", $file)) . "." . $ext;
+        $fileNameWDir = sprintf(
+            'images/fullView/%s.%s',
+            $filename,
+            $ext
+        );
+        $targetDir = "D:/wamp/www/InstagramPortfolioAdmin/www/images/Gallery/" . $album . "/" . $file;
+        copy($targetDir, $fileNameWDir);
+        ImageFileManager::defaultImage($fileNameWDir);
+        ImageFileManager::makeThumbnail($fileNameWDir);
+        return $fileName;
     }
 }
