@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1:3306
--- Vytvořeno: Pát 15. led 2021, 01:06
+-- Vytvořeno: Sob 16. led 2021, 20:03
 -- Verze serveru: 8.0.21
 -- Verze PHP: 7.4.9
 
@@ -58,7 +58,7 @@ INSERT INTO `album` (`id`, `title`, `dash_title`, `description`, `keywords`, `no
 (180, 'Fet Erotica Magazine Shoot', 'fet-erotica-magazine-shoot', '', '', 18, '2021-01-14 23:24:15', '2021-01-14 23:24:15', 5, 1, 2860),
 (181, 'Fet Erotica Magazine Shoot Part 1', 'fet-erotica-magazine-shoot-part-1', '', '', 18, '2021-01-14 23:24:21', '2021-01-14 23:24:21', 6, 1, 2878),
 (182, 'Fet Erotica Magazine Shoot Part 2', 'fet-erotica-magazine-shoot-part-2', '', '', 18, '2021-01-14 23:24:28', '2021-01-14 23:24:28', 7, 1, 2896),
-(190, 'Fet Erotica Magazine Shoot Part 3', 'fet-erotica-magazine-shoot-part-3', '', '', 15, '2021-01-14 23:25:21', '2021-01-14 23:25:21', 8, 1, 3028),
+(190, 'Fet Erotica Magazine Shoot Part 3', 'fet-erotica-magazine-shoot-part-3', '', '', 11, '2021-01-14 23:25:21', '2021-01-14 23:25:21', 8, 1, 3030),
 (191, 'Inhale_Exhale Part 1', 'inhale_exhale-part-1', '', '', 9, '2021-01-14 23:25:25', '2021-01-14 23:25:25', 9, 1, 3043),
 (192, 'Inhale_Exhale Part 2', 'inhale_exhale-part-2', '', '', 10, '2021-01-14 23:25:29', '2021-01-14 23:25:29', 10, 1, 3052),
 (193, 'Portfolio Shoot', 'portfolio-shoot', '', '', 12, '2021-01-14 23:28:58', '2021-01-14 23:28:58', 11, 1, 3062),
@@ -68,7 +68,7 @@ INSERT INTO `album` (`id`, `title`, `dash_title`, `description`, `keywords`, `no
 (197, 'Submissive 11 - Archived', 'submissive-11-archived', '', '', 2, '2021-01-14 23:29:14', '2021-01-14 23:29:14', 15, 1, 3357),
 (198, 'Submissive 12 - Archived', 'submissive-12-archived', '', '', 2, '2021-01-14 23:29:14', '2021-01-14 23:29:14', 16, 1, 3358),
 (199, 'Submissive 13 Part 1', 'submissive-13-part-1', '', '', 27, '2021-01-14 23:29:22', '2021-01-14 23:29:22', 17, 1, 3116),
-(200, 'Submissive 13 Part 2', 'submissive-13-part-2', '', '', 18, '2021-01-14 23:29:30', '2021-01-14 23:29:30', 18, 1, 3144),
+(200, 'Submissive 13 Part 2', 'submissive-13-part-2', '', '', 18, '2021-01-14 23:29:30', '2021-01-14 23:29:30', 18, 1, 3154),
 (201, 'Submissive 13 Part 3', 'submissive-13-part-3', '', '', 21, '2021-01-14 23:29:37', '2021-01-14 23:29:37', 19, 1, 3161),
 (202, 'Submissive 14 - Archived', 'submissive-14-archived', '', '', 1, '2021-01-14 23:29:39', '2021-01-14 23:29:39', 20, 1, 3182),
 (203, 'Submissive 15', 'submissive-15', '', '', 15, '2021-01-14 23:31:27', '2021-01-14 23:31:27', 21, 1, 3183),
@@ -89,7 +89,7 @@ INSERT INTO `album` (`id`, `title`, `dash_title`, `description`, `keywords`, `no
 (218, 'Submissive 21 Part 2', 'submissive-21-part-2', '', '', 24, '2021-01-14 23:35:11', '2021-01-14 23:35:11', 36, 1, 3482),
 (219, 'Submissive 22 Part 1', 'submissive-22-part-1', '', '', 15, '2021-01-14 23:35:19', '2021-01-14 23:35:19', 37, 1, 3506),
 (220, 'Submissive 22 Part 2', 'submissive-22-part-2', '', '', 12, '2021-01-14 23:35:25', '2021-01-14 23:35:25', 38, 1, 3521),
-(221, 'Submissive 23', 'submissive-23', '', '', 15, '2021-01-14 23:35:32', '2021-01-14 23:35:32', 39, 1, 3533),
+(221, 'Submissive 23', 'submissive-23', '', '', 15, '2021-01-14 23:35:32', '2021-01-14 23:35:32', 39, 1, 3537),
 (222, 'Submissive 24', 'submissive-24', '', '', 24, '2021-01-14 23:35:41', '2021-01-14 23:35:41', 40, 1, 3548),
 (223, 'Submissive 25', 'submissive-25', '', '', 33, '2021-01-14 23:37:15', '2021-01-14 23:37:15', 41, 1, 3572),
 (224, 'Submissive 26 Part 1', 'submissive-26-part-1', '', '', 12, '2021-01-14 23:37:21', '2021-01-14 23:37:21', 42, 1, 3605),
@@ -120,7 +120,7 @@ INSERT INTO `album` (`id`, `title`, `dash_title`, `description`, `keywords`, `no
 (249, 'Submissive 37 Part 3', 'submissive-37-part-3', '', '', 15, '2021-01-14 23:41:20', '2021-01-14 23:41:20', 67, 1, 4067),
 (250, 'Submissive 38 Part 1', 'submissive-38-part-1', '', '', 18, '2021-01-14 23:41:27', '2021-01-14 23:41:27', 68, 1, 4082),
 (251, 'Submissive 38 Part 2', 'submissive-38-part-2', '', '', 18, '2021-01-14 23:41:33', '2021-01-14 23:41:33', 69, 1, 4100),
-(252, 'Submissive 38 Part 3', 'submissive-38-part-3', '', '', 12, '2021-01-14 23:41:37', '2021-01-14 23:41:37', 70, 1, 4118),
+(252, 'Submissive 38 Part 3', 'submissive-38-part-3', '', '', 12, '2021-01-14 23:41:37', '2021-01-14 23:41:37', 70, 1, 4119),
 (253, 'Submissive 39', 'submissive-39', '', '', 18, '2021-01-14 23:42:06', '2021-01-14 23:42:06', 71, 1, 4130),
 (254, 'Submissive 40 Part 1', 'submissive-40-part-1', '', '', 15, '2021-01-14 23:42:12', '2021-01-14 23:42:12', 72, 1, 4148),
 (255, 'Submissive 40 Part 2', 'submissive-40-part-2', '', '', 12, '2021-01-14 23:42:17', '2021-01-14 23:42:17', 73, 1, 4163),
@@ -326,21 +326,17 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (2911, 'be3300c86e22f59a142d1c9ff4a9f4a5d12248d6898b50bd7e59051f5096ab2f.jpg', 'jpg', '2021-01-14 23:24:29', '2021-01-14 23:24:29', NULL, NULL, 16, 182),
 (2912, '2f1d07dd545ab82f8278a51472b60887d5d6a08009feb61b3eb12f5e2d0f6011.jpg', 'jpg', '2021-01-14 23:24:29', '2021-01-14 23:24:29', NULL, NULL, 17, 182),
 (2913, 'acddcbff633c8a53af445a24a52232a68a3c1b9e31db89a9476da1c9d42f9fbf.jpg', 'jpg', '2021-01-14 23:24:29', '2021-01-14 23:24:29', NULL, NULL, 18, 182),
-(3028, '34b9c5e0c676aea57f1b73b3b6371b053d082834506e6de98e12eecbc6e1bcaf.jpg', 'jpg', '2021-01-14 23:25:21', '2021-01-14 23:25:21', NULL, NULL, 1, 190),
-(3029, 'a4c2e8ba56cc3561211c196c8b507a84493f7f41ea97ea74040a5b8fb56f5197.jpg', 'jpg', '2021-01-14 23:25:21', '2021-01-14 23:25:21', NULL, NULL, 2, 190),
-(3030, '86760b99c1562330ed4ea856c3d17d5033089b46879f73d1ee2083d8c1e33b8d.jpg', 'jpg', '2021-01-14 23:25:21', '2021-01-14 23:25:21', NULL, NULL, 3, 190),
-(3031, 'ed8f3d4355dd99162c96cb7c11de1f358a177b45c94ed30d6ac78a688bc91648.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 4, 190),
-(3032, 'c4c9005c92f15c31d66e8f1c238d693387fda083f6567c0995b433ef93a4be8c.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 5, 190),
-(3033, 'b48af64f66eb08379b3cc07d305058da67dbeebebdcdaf4657812763ca86aad6.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 6, 190),
-(3034, '86d7e286449565affa9b789dce399644a1ec77dd1e17a3b483098f8cfccc2958.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 7, 190),
-(3035, 'da392401fc6aad40dbf7a0732366ed3d8443783714001b54433118086d1b573b.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 8, 190),
-(3036, '8721e4455718660dc773ec3834f42737fce8396e8585e447edc606c058ce55b3.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 9, 190),
-(3037, 'bb7867e55a5c0108d0be778cddc06dc945d47c347b4bb30618ca0985cdeecbc0.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 10, 190),
-(3038, '1e47508262d3f5c2d7f8fb8ca50ecf10f70b46a7635dfd5e1ab6d714f03e42bd.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 11, 190),
-(3039, '489b7dd9e25e2d8a95e87256a407760c50b695acaf8236ad3bd7e3e38d680e76.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 12, 190),
-(3040, 'a5a893995476a8e58104f3fa85c5a5041758711f4a39a11ab03ffae158ccc6a5.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 13, 190),
-(3041, '641abeed3c33e95fb07365972333625c6e15bd0a90ad8cc8b5dd6355e46aeca5.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 14, 190),
-(3042, '781eafcb5e2636d476936fd8f20579d066217dcd27dba2688e7a7139230b3576.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 15, 190),
+(3030, '86760b99c1562330ed4ea856c3d17d5033089b46879f73d1ee2083d8c1e33b8d.jpg', 'jpg', '2021-01-14 23:25:21', '2021-01-14 23:25:21', NULL, NULL, 1, 190),
+(3031, 'ed8f3d4355dd99162c96cb7c11de1f358a177b45c94ed30d6ac78a688bc91648.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 2, 190),
+(3033, 'b48af64f66eb08379b3cc07d305058da67dbeebebdcdaf4657812763ca86aad6.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 3, 190),
+(3034, '86d7e286449565affa9b789dce399644a1ec77dd1e17a3b483098f8cfccc2958.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 4, 190),
+(3036, '8721e4455718660dc773ec3834f42737fce8396e8585e447edc606c058ce55b3.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 5, 190),
+(3037, 'bb7867e55a5c0108d0be778cddc06dc945d47c347b4bb30618ca0985cdeecbc0.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 6, 190),
+(3038, '1e47508262d3f5c2d7f8fb8ca50ecf10f70b46a7635dfd5e1ab6d714f03e42bd.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 7, 190),
+(3039, '489b7dd9e25e2d8a95e87256a407760c50b695acaf8236ad3bd7e3e38d680e76.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 8, 190),
+(3040, 'a5a893995476a8e58104f3fa85c5a5041758711f4a39a11ab03ffae158ccc6a5.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 9, 190),
+(3041, '641abeed3c33e95fb07365972333625c6e15bd0a90ad8cc8b5dd6355e46aeca5.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 10, 190),
+(3042, '781eafcb5e2636d476936fd8f20579d066217dcd27dba2688e7a7139230b3576.jpg', 'jpg', '2021-01-14 23:25:22', '2021-01-14 23:25:22', NULL, NULL, 11, 190),
 (3043, '9e63e066677bda7d8d5a797d6b1d1086e8c45f4a9e3b2fc1505acd79b5b065cd.jpg', 'jpg', '2021-01-14 23:25:25', '2021-01-14 23:25:25', NULL, NULL, 1, 191),
 (3044, 'f5e131d207d1d3b77b8b74f08b87baa5a41d70dd20e40ec9fb6d2838dbd221d4.jpg', 'jpg', '2021-01-14 23:25:25', '2021-01-14 23:25:25', NULL, NULL, 2, 191),
 (3045, 'b38f8c2369c46d05aa41f76e0feb0699da7f493ac8063caebb457eb9dd431aa4.jpg', 'jpg', '2021-01-14 23:25:26', '2021-01-14 23:25:26', NULL, NULL, 3, 191),
@@ -540,12 +536,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (3244, '8d497e6d235a60f5a4a537e6eeca28958d074333dd328106d11b85efdc066ac7.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 8, 206),
 (3245, '9fa807fd09bb55e1c228230382d84ac7702ddce6a512f89824aeef6372634d13.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 9, 206),
 (3246, 'f661acaa90c5e31e4c79e901f8eee5a3f4902decd3f3d6b33140f41289f191d4.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 10, 206),
-(3247, 'ab58f563aa0e7236e109b3f7255598a230118db9538b9627eb8f36fd2ede37a6.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 11, 206);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(3247, 'ab58f563aa0e7236e109b3f7255598a230118db9538b9627eb8f36fd2ede37a6.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 11, 206),
 (3248, 'abfc1a32b2e28c702f38909c005ea8f07fa223d1753669f7774194d5f8acfefb.jpg', 'jpg', '2021-01-14 23:31:46', '2021-01-14 23:31:46', NULL, NULL, 12, 206),
 (3249, '367ac43171369452707e55fa690b267247aba7051e8aee6b94287600f412abaf.jpg', 'jpg', '2021-01-14 23:31:47', '2021-01-14 23:31:47', NULL, NULL, 13, 206),
 (3250, '1126c370c01d9acd85a39abd11b7215480984ae5f81d812f405edce2e009aa01.jpg', 'jpg', '2021-01-14 23:31:47', '2021-01-14 23:31:47', NULL, NULL, 14, 206),
-(3251, '1cf1206d6d95b05c682dc45034b7843c2515ca0ec679e2d9b134e3b9bc17b04f.jpg', 'jpg', '2021-01-14 23:31:47', '2021-01-14 23:31:47', NULL, NULL, 15, 206),
+(3251, '1cf1206d6d95b05c682dc45034b7843c2515ca0ec679e2d9b134e3b9bc17b04f.jpg', 'jpg', '2021-01-14 23:31:47', '2021-01-14 23:31:47', NULL, NULL, 15, 206);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (3252, '4ba8b1b7863f5b36e163d0ed6dbfd68894870c189e74187dfd9915b0c82147b6.jpg', 'jpg', '2021-01-14 23:31:51', '2021-01-14 23:31:51', NULL, NULL, 1, 207),
 (3253, '9cbf285eb050c28dfcd0aca61f01311a23d735f408341079a03c50b4fd6c4da3.jpg', 'jpg', '2021-01-14 23:31:51', '2021-01-14 23:31:51', NULL, NULL, 2, 207),
 (3254, '3b12b65a53f7cd9abead5f967562f1d05fef282b7199bc0b47e206cc75821258.jpg', 'jpg', '2021-01-14 23:31:51', '2021-01-14 23:31:51', NULL, NULL, 3, 207),
@@ -870,12 +866,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (3580, '335c1650ff107579a4fa5adcce287e69d71d614bad89ecf21c0d520e2cb6c109.jpg', 'jpg', '2021-01-14 23:37:16', '2021-01-14 23:37:16', NULL, NULL, 9, 223),
 (3581, '43a22036c3ee3e43b9b10bad9208476bc3d9e7fa7a4d00e6d7ff5ed86cd888d2.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 10, 223),
 (3582, 'd214bc909f3bdad2e81e31dc2c01e9195eaeb127fa874ec965d9a909a51db2a0.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 11, 223),
-(3583, '387d4122958b766a32be7a5cd2f9f6aeecf8cb9a0e942d103b6b6b050cab5b9e.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 12, 223);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(3583, '387d4122958b766a32be7a5cd2f9f6aeecf8cb9a0e942d103b6b6b050cab5b9e.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 12, 223),
 (3584, '117281627072c57a7e4ed55fe1fd0157dfede43af871d141bf09afa9d8260364.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 13, 223),
 (3585, '92c0774e8e524e64363cb39bde06bf56b9f4e2e18415228a54992b0615cfe968.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 14, 223),
 (3586, 'cc1ad52008a9307da569e31ae6a6bfa2aa3f43495465a4aa3aefef24bd4a8846.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 15, 223),
-(3587, '14ce7c3e10939ee19ae063a84e66d208a87e963609068518ba298fb13bf74fda.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 16, 223),
+(3587, '14ce7c3e10939ee19ae063a84e66d208a87e963609068518ba298fb13bf74fda.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 16, 223);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (3588, '71637fb2005b7945c4a3289e487550f1a8b984fae58e02660e95cb8c1ab57972.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 17, 223),
 (3589, '1164172ea6547321e6a29aa22c64be2534b1839d614d842203daa100d99bfcbc.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 18, 223),
 (3590, '0d7c6a24393f3a0d5cf5a9d3bfe4b0a93c339d3143c6b1da42b3b76facbbb62c.jpg', 'jpg', '2021-01-14 23:37:17', '2021-01-14 23:37:17', NULL, NULL, 19, 223),
@@ -1200,12 +1196,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (3920, '483f5c94d999e6f2a3cbc9cf6d98e4f57b725b7e5c7277c885131168cccf2278.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 7, 240),
 (3921, 'dfd2732c660dd8878e9d1ffe7fc8734273ee44a11806700c459635f6aa82d614.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 8, 240),
 (3922, '9cd732f073a15d2a4c0b1478cec8e0f3fc7db1744aa6134082dedc4f12d95cef.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 9, 240),
-(3923, '4dd6f2dbefba697518a9d507d3daa2c591f25f32e6e6240cef88ceabe9a20489.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 10, 240);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(3923, '4dd6f2dbefba697518a9d507d3daa2c591f25f32e6e6240cef88ceabe9a20489.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 10, 240),
 (3924, 'fe7b906545c35a3843d1be41a5a15a0b8e64bf5ac24dca6f6b54f24f330047f9.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 11, 240),
 (3925, 'c3c2c1866d042867f40f6c34f7af1c31e6616def851da309d9a493b499b9656b.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 12, 240),
 (3926, '397e68cf6d8bf4af9bf243677994aaf976990abfe2266599590586e29beedfae.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 13, 240),
-(3927, '6bbc3900f46b6dfad3e1d93a13d6d54558ec4be588161c5436481c8628d971a8.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 14, 240),
+(3927, '6bbc3900f46b6dfad3e1d93a13d6d54558ec4be588161c5436481c8628d971a8.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 14, 240);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (3928, '05d287116dd3245c075e93a3ae459042f8297d7403d40c3aa99618f5c131598f.jpg', 'jpg', '2021-01-14 23:39:42', '2021-01-14 23:39:42', NULL, NULL, 15, 240),
 (3929, '3b8c6bb94dd7ff3ffe93e856e95f9aa6df4843ec5a9bf4cd6418ef7f50b71186.jpg', 'jpg', '2021-01-14 23:39:43', '2021-01-14 23:39:43', NULL, NULL, 16, 240),
 (3930, 'f45bc838a0978dc1c71d499e8807f33a29bd438dc97b983682219b0349b36446.jpg', 'jpg', '2021-01-14 23:39:43', '2021-01-14 23:39:43', NULL, NULL, 17, 240),
@@ -1530,12 +1526,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (4282, '967c82fe97783aa79e33568901a0acdd2a2e418ce4b2e432fb9db0a80800bd1b.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 7, 262),
 (4283, 'bddf8517d22f66727a201b9268f34f459f5e6bd7d82a8724f9d1c054a5af33e9.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 8, 262),
 (4284, 'cefbeb44f186123c0117e32a73cc05029f3d3943b83d6b99b8f71e1f08a45d40.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 9, 262),
-(4285, '622f038cd30f8cd1e5f0207942d3e9fc4ccfec9d34f367c9cae0c3ef6ac55a90.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 10, 262);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(4285, '622f038cd30f8cd1e5f0207942d3e9fc4ccfec9d34f367c9cae0c3ef6ac55a90.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 10, 262),
 (4286, 'd56953aae8e17e10af8c93c8dc8c27274fb930c6368b9b60aba0a9365177e148.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 11, 262),
 (4287, '99d4f03d5431f3bbe01b93cefab17f4a5568349533dade66be1e5c5771b8f679.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 12, 262),
 (4288, '8bfdfff8bfc796064d7699d85dc5af553675b6a7a2712479d77c00eab9d8f72f.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 13, 262),
-(4290, 'd81d57392e03607500eed1528ca7fd417d243780e2c7013cd50bb32abfe905ba.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 15, 262),
+(4290, 'd81d57392e03607500eed1528ca7fd417d243780e2c7013cd50bb32abfe905ba.jpg', 'jpg', '2021-01-14 23:43:03', '2021-01-14 23:43:03', NULL, NULL, 15, 262);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (4291, '4840c37dbd05bd12e0956629868b9f3b0b5f5af613d012415c6b26267d50a0e7.jpg', 'jpg', '2021-01-14 23:43:45', '2021-01-14 23:43:45', NULL, NULL, 1, 263),
 (4292, '837a08ec2fb09aedaf1cb2301ff53ed245f60f82a48396f2b536b4f230f28a10.jpg', 'jpg', '2021-01-14 23:43:45', '2021-01-14 23:43:45', NULL, NULL, 2, 263),
 (4293, '5f1ac06219a4ed920a0dc4fde9505a1716d19e11e6d2a4a54d3651b3d6593629.jpg', 'jpg', '2021-01-14 23:43:45', '2021-01-14 23:43:45', NULL, NULL, 3, 263),
@@ -1860,12 +1856,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (4655, '032f226aacf4f042be192b58fd2784eb1e27b73310caf23b9ab7f68168637baa.jpg', 'jpg', '2021-01-14 23:47:16', '2021-01-14 23:47:16', NULL, NULL, 18, 286),
 (4656, 'daa62ecc1df0a2a85fbdbae38723e4b1efc50bb469840f51cf2e556d7284d0ba.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 1, 287),
 (4657, 'a40d1d4cc64be89157830c867ac87d27542386f8f4223b88f7ce57143b3d9126.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 2, 287),
-(4658, '6950bd3570c469d5ec2f405fa31b4182596305455af1e8e02edad7d50ad1271a.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 3, 287);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(4658, '6950bd3570c469d5ec2f405fa31b4182596305455af1e8e02edad7d50ad1271a.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 3, 287),
 (4659, 'd3eb1a4f8ee6b412291e1f9b3a46571578170d205f5482d88955a3d9c5bb7c79.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 4, 287),
 (4660, '8c7c8bd2bc9db0fb26dd2c7367bf4e7ea0f0c8bb6040df50eec28e1ead0fdf50.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 5, 287),
 (4661, 'b143cef9ddd84138c8ac653ff03241f6c4238f74f4aba187eeac955897eba3aa.jpg', 'jpg', '2021-01-14 23:47:18', '2021-01-14 23:47:18', NULL, NULL, 6, 287),
-(4662, 'c7a818c7e9dad879f006d16b38afd5f578dec4200bc8129481ef2cf5a233ce94.jpg', 'jpg', '2021-01-14 23:47:21', '2021-01-14 23:47:21', NULL, NULL, 1, 288),
+(4662, 'c7a818c7e9dad879f006d16b38afd5f578dec4200bc8129481ef2cf5a233ce94.jpg', 'jpg', '2021-01-14 23:47:21', '2021-01-14 23:47:21', NULL, NULL, 1, 288);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (4663, 'ea03765f8d4074158ffb74b4c431bd570ed93ca6237ddf2e71dd66e3b857c4f0.jpg', 'jpg', '2021-01-14 23:47:21', '2021-01-14 23:47:21', NULL, NULL, 2, 288),
 (4664, 'b6d59d0e277c6dfafb034ed32a86865a49c0e449bd004f54e8f45e75cade2abe.jpg', 'jpg', '2021-01-14 23:47:21', '2021-01-14 23:47:21', NULL, NULL, 3, 288),
 (4665, '76b119f00b27f5c9b60b0766b45b48a408c8c5357dbc82ba07902e8dbbd2fb5b.jpg', 'jpg', '2021-01-14 23:47:21', '2021-01-14 23:47:21', NULL, NULL, 4, 288),
@@ -2190,12 +2186,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (5003, '100953e1d991a5805e80e8a2587bbd4fa1e4eb8bc4fa05275b70cab2b6badb67.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 5, 312),
 (5004, '16d8bfffdeb25dbd92118bbabe62392992c38a930279941a4cb07aeb71eaf999.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 6, 312),
 (5005, '82d02abb7d5f733c566405a101b0069d8679cbe82dc80d59e749fd4af9f50c8f.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 7, 312),
-(5006, '7eeda2c22c19757b50333f8084ace54b90e973840cf405cc0c5a40a0449d5e16.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 8, 312);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(5006, '7eeda2c22c19757b50333f8084ace54b90e973840cf405cc0c5a40a0449d5e16.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 8, 312),
 (5007, 'dd96dc786abce46d9d5d744a9d95857fe8da2dda5259400992c86093a6853d6c.jpg', 'jpg', '2021-01-14 23:51:25', '2021-01-14 23:51:25', NULL, NULL, 9, 312),
 (5008, '9594aaf8f5360a9a50607d802a02e8801788cee0ba45c1463257a11833e8e327.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 1, 313),
 (5009, 'f9820b5e083b47360ccf6bba4df917aca90a76292dbe1c749c7fff5058bbd790.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 2, 313),
-(5010, 'd0b456e167b69ba31b32e5152b0129654bb817718844cc9d6d1fa9fc60cf3307.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 3, 313),
+(5010, 'd0b456e167b69ba31b32e5152b0129654bb817718844cc9d6d1fa9fc60cf3307.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 3, 313);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (5011, '288d36da16072f975dba76aa40ba4a3de786c68c13c628413af5755de171829c.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 4, 313),
 (5013, 'c616db9d03c1877ad0c25c0357d8853b530c21cd1755a6e6cd630a10c5663d29.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 6, 313),
 (5014, '796ed42767b7516831fb449f915e0c940c880d34b954eac76930edad1790d1f8.jpg', 'jpg', '2021-01-14 23:51:59', '2021-01-14 23:51:59', NULL, NULL, 7, 313),
@@ -2519,12 +2515,12 @@ INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, 
 (5656, 'c6fe8216ffb0b7e816dcbbeaccac4a72b4ad85ea045a275862169cc9caafc15a.jpg', 'jpg', '2021-01-15 01:04:25', '2021-01-15 01:04:25', NULL, NULL, 0, NULL),
 (5657, '76f5797bd8668cd3b7da91a048f64c1d9cfd0f3d80dc1f3767f8491fc67c89af.jpg', 'jpg', '2021-01-15 01:04:25', '2021-01-15 01:04:25', NULL, NULL, 0, NULL),
 (5658, '12a9087ea7fee240377081fc5c3c68491afa13f952618f86f97c709f80dfadbc.jpg', 'jpg', '2021-01-15 01:04:26', '2021-01-15 01:04:26', NULL, NULL, 0, NULL),
-(5659, 'cc7c05bf0596ce4bd93b7f95c051989e52bee5bdf986b0f4299d4c11deb451a1.jpg', 'jpg', '2021-01-15 01:04:26', '2021-01-15 01:04:26', NULL, NULL, 0, NULL);
-INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
+(5659, 'cc7c05bf0596ce4bd93b7f95c051989e52bee5bdf986b0f4299d4c11deb451a1.jpg', 'jpg', '2021-01-15 01:04:26', '2021-01-15 01:04:26', NULL, NULL, 0, NULL),
 (5660, 'be54858cd7a7b9f8fa960cffa9c7629c92b2aace7e60fff5e7bf7bb0979d8aa8.jpg', 'jpg', '2021-01-15 01:04:27', '2021-01-15 01:04:27', NULL, NULL, 0, NULL),
 (5661, 'f8c00b90815bd3fc722c2e3fdf3fd00b960880daba5ec12fd75bce255bb46ac6.jpg', 'jpg', '2021-01-15 01:04:27', '2021-01-15 01:04:27', NULL, NULL, 0, NULL),
 (5662, 'e031ea4d777b6d0ece90d4e8c17b0c65749d42554b4f8e1dbbc2ea902432583c.jpg', 'jpg', '2021-01-15 01:04:28', '2021-01-15 01:04:28', NULL, NULL, 0, NULL),
-(5663, '023422c20535c2bb260c849f1926c434f2f1c3a3a96b4b4280c6223cd7ee8f47.jpg', 'jpg', '2021-01-15 01:04:28', '2021-01-15 01:04:28', NULL, NULL, 0, NULL),
+(5663, '023422c20535c2bb260c849f1926c434f2f1c3a3a96b4b4280c6223cd7ee8f47.jpg', 'jpg', '2021-01-15 01:04:28', '2021-01-15 01:04:28', NULL, NULL, 0, NULL);
+INSERT INTO `image` (`id`, `filename`, `data_type`, `added`, `edited`, `title`, `description`, `order`, `album_id`) VALUES
 (5664, '1a3e4071e1d8a99b1e3539fb8bc5e013e1da084fbba5faa644849526ab28f9d3.jpg', 'jpg', '2021-01-15 01:04:28', '2021-01-15 01:04:28', NULL, NULL, 0, NULL),
 (5665, '639ea8134491a04f202cf7e7a7b693c7688a367dc742d885816e0788ef9f7c7b.jpg', 'jpg', '2021-01-15 01:04:29', '2021-01-15 01:04:29', NULL, NULL, 0, NULL),
 (5666, 'a03486917d794d69a0796f74286df553b8969459e693bc85418066f155eb391a.jpg', 'jpg', '2021-01-15 01:04:29', '2021-01-15 01:04:29', NULL, NULL, 0, NULL),
@@ -2793,7 +2789,7 @@ CREATE TABLE IF NOT EXISTS `landing_page_image` (
 --
 
 INSERT INTO `landing_page_image` (`id`, `filename`) VALUES
-(1, '723d7adfcb267870282ad6aebcdf8191576b6b482595c2bf8aa0cfb219cb40fa.jpg');
+(1, '6e55ee6632b338be3071363aaf3bc8c5bc3f5f1c5493ab37d92261388baaef0a.jpg');
 
 -- --------------------------------------------------------
 
@@ -2826,6 +2822,7 @@ CREATE TABLE IF NOT EXISTS `web_info` (
   `bio_description` text NOT NULL,
   `instagram_link` varchar(90) NOT NULL,
   `twitter_link` varchar(90) NOT NULL,
+  `profile_picture` varchar(250) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
@@ -2833,8 +2830,8 @@ CREATE TABLE IF NOT EXISTS `web_info` (
 -- Vypisuji data pro tabulku `web_info`
 --
 
-INSERT INTO `web_info` (`id`, `default_title`, `default_description`, `default_keywords`, `email`, `login`, `bio_title`, `bio_description`, `instagram_link`, `twitter_link`) VALUES
-(1, 'Gareth Jorden Portfolio', 'Portfolio of Gareth Jorden Photography', 'bdsm,bondage,photography', 'garethjorden@hotmail.com', '$2y$10$wB5CKa.F1JxX.ernClHYze9zv3JhcTj0V.RkA1lJ1YN2yQG/UmhaG', 'Gareth Jorden', 'Gareth Jorden\nPhotographer , London UK', 'https://www.instagram.com/garethjorden/', 'https://twitter.com/garethjorden');
+INSERT INTO `web_info` (`id`, `default_title`, `default_description`, `default_keywords`, `email`, `login`, `bio_title`, `bio_description`, `instagram_link`, `twitter_link`, `profile_picture`) VALUES
+(1, 'Gareth Jorden Portfolio', 'Portfolio of Gareth Jorden Photography', 'bdsm,bondage,photography', 'garethjorden@hotmail.com', '$2y$10$wB5CKa.F1JxX.ernClHYze9zv3JhcTj0V.RkA1lJ1YN2yQG/UmhaG', 'Gareth Jorden', 'Gareth Jorden\nPhotographer , London UK', 'https://www.instagram.com/garethjorden/', 'https://twitter.com/garethjorden', 'efb65e5c60f0a5c1850533fb520faaae637ebea31e27ec0cfb29e15956564ffa.jpg');
 
 --
 -- Omezení pro exportované tabulky

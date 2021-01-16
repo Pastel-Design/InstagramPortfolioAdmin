@@ -189,7 +189,28 @@ td, th {
 }
 
 .landing-page-mockup {
-  max-height: 50vh;
+  max-width: 40vw;
+}
+
+.profile-picture-mockup {
+  height: 350px;
+  width: 350px;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.profile-landing-container {
+  width: 100vw;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 20px;
+}
+.profile-landing-container section {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 45vw;
 }
 
 .sixteen-nine {

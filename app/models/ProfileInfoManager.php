@@ -25,7 +25,6 @@ class ProfileInfoManager
 
     public function updateLandingPage($newFilename)
     {
-        var_dump(DbManager::requestUnit("SELECT filename FROM landing_page_image WHERE id = 1;"));
         if ($filename=DbManager::requestUnit("SELECT filename FROM landing_page_image WHERE id = 1;")) {
             unlink("images/fullview/" . $filename);
             unlink("images/thumbnail/" . $filename);
@@ -38,5 +37,19 @@ class ProfileInfoManager
     public function getLandingPageImage()
     {
         return DbManager::requestUnit("SELECT filename FROM landing_page_image WHERE id = 1");
+    }
+
+    public function updateProfilePicture($newFilename)
+    {
+        if ($filename=DbManager::requestUnit("SELECT profile_picture FROM web_info WHERE id = 1;")) {
+            unlink("images/fullview/" . $filename);
+            unlink("images/thumbnail/" . $filename);
+        }
+        return DbManager::requestAffect("UPDATE web_info SET profile_picture = ? WHERE id = 1", [$newFilename]);
+    }
+
+    public function getProfilePicture()
+    {
+        return DbManager::requestUnit("SELECT profile_picture FROM web_info WHERE id = 1");
     }
 }

@@ -40,9 +40,7 @@ final class Router
             DbManager::connect(DbConfig::$host, DbConfig::$username, DbConfig::$pass, DbConfig::$database);
         } catch (PDOException $exception) {
             if ($parsedURL[0] != "error") {
-                echo("chyba db");
-                //var_dump($exception);
-                //$this->reroute("error/500");
+                $this->reroute("error/500");
             }
         }
         try {

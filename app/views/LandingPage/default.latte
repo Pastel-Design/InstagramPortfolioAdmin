@@ -1,11 +1,24 @@
 {extends "../@layout.latte"}
 {block content}
-    <div class="title-container">
-        <h1>Landing page image</h1>
-    </div>
-    <div class="landing-page-container">
-        {$landingPageForm->render()}
-        <img class="landing-page-mockup sixteen-nine" src="images/fullview/{$landingPageImage}">
-    </div>
+    <section class="profile-landing-container">
+        <section>
+        <div class="title-container">
+            <h1>Landing page image</h1>
+        </div>
+        <div class="landing-page-container">
+            {$landingPageForm->render()}
+            <img class="landing-page-mockup sixteen-nine" src="images/fullview/{$landingPageImage}">
+        </div>
+    </section>
+    <section>
+        <div class="title-container">
+            <h1>Profile picture image</h1>
+        </div>
+        <div class="landing-page-container">
+            {$profilePictureForm->render()}
+            <img class="profile-picture-mockup" src="images/fullview/{$profilePicture}">
+        </div>
+    </section>
+    </section>
 
 {/block}

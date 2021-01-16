@@ -12,7 +12,7 @@ use Nette\Forms\Form;
  *
  * @package app\forms
  */
-final class LandingPageForm extends FormFactory
+final class ProfilePictureForm extends FormFactory
 {
 
     /**
@@ -25,7 +25,7 @@ final class LandingPageForm extends FormFactory
      */
     public function __construct()
     {
-        $this->form = parent::getBootstrapForm("LandingPageForm");
+        $this->form = parent::getBootstrapForm("ProfilePictureForm");
     }
 
     /**
@@ -35,7 +35,7 @@ final class LandingPageForm extends FormFactory
      */
     public function create(callable $onSuccess): Form
     {
-        $this->form->addUpload('filename')
+        $this->form->addUpload('filename',null)
             ->addRule($this->form::IMAGE, "You can upload only images");
         $this->form->addSubmit("submit", "Upload");
 
