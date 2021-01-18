@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1:3306
--- Vytvořeno: Sob 16. led 2021, 20:13
+-- Vytvořeno: Sob 16. led 2021, 20:03
 -- Verze serveru: 8.0.21
 -- Verze PHP: 7.4.9
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Databáze: `database`
 --
-
 
 -- --------------------------------------------------------
 
