@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Počítač: 127.0.0.1:3306
--- Vytvořeno: Sob 16. led 2021, 20:13
+-- Vytvořeno: Pon 18. led 2021, 18:02
 -- Verze serveru: 8.0.21
 -- Verze PHP: 7.4.9
 
@@ -20,7 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Databáze: `database`
 --
-
 
 -- --------------------------------------------------------
 
@@ -2791,19 +2790,6 @@ CREATE TABLE IF NOT EXISTS `landing_page_image` (
 
 INSERT INTO `landing_page_image` (`id`, `filename`) VALUES
 (1, '6e55ee6632b338be3071363aaf3bc8c5bc3f5f1c5493ab37d92261388baaef0a.jpg');
-
--- --------------------------------------------------------
-
---
--- Struktura tabulky `profile_image`
---
-
-DROP TABLE IF EXISTS `profile_image`;
-CREATE TABLE IF NOT EXISTS `profile_image` (
-  `id` int UNSIGNED NOT NULL AUTO_INCREMENT,
-  `filename` varchar(1024) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 

@@ -6,6 +6,7 @@ namespace app\forms;
 
 use Nette\Forms\Form;
 use Nette\Forms\Controls\Checkbox as Checkbox;
+
 /**
  * Form FormFactory
  *
@@ -43,9 +44,6 @@ abstract class FormFactory
         $renderer->wrappers['control']['.button'] = 'btn btn-success';
         $renderer->wrappers['control']['.select'] = 'form-control';
         $renderer->wrappers['control']['.file'] = 'form-control-file';
-
-
-
 
         foreach ($form->getControls() as $control) {
             $type = $control->getOption('type');

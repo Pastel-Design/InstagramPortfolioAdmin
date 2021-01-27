@@ -31,6 +31,7 @@ class DefaultController extends Controller
     {
         /*
          * FILE UPLOAD FOR ALBUMS
+         * !DO NOT USE
         set_time_limit(0);
         $albumManager = new AlbumManager();
         $albums = scandir("images/Gallery");
