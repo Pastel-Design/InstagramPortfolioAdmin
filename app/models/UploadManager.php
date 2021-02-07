@@ -110,7 +110,7 @@ class UploadManager
      */
     public static function uploadFromFolder($file, $album)
     {
-        $targetDir = "D:/wamp/www/InstagramPortfolioAdmin/www/images/Gallery/" . $album . "/" . $file;
+        $targetDir = "images/Gallery/" . $album . "/" . $file;
         $ext = strtolower(array_reverse(explode(".", $file))[0]);
         $fileName = ($filename = sha1_file($targetDir)) . "." . $ext;
         $fileNameWDir = sprintf(
