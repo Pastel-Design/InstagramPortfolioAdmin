@@ -12,7 +12,7 @@ class DbConfig
     public static string $host = '127.0.0.1';
     public static string $username = 'root';
     public static string $pass = '';
-    public static string $database = 'database';
+    public static string $database = 'garethjo_database';
     /*
     public static string $host = 'c072um.forpsi.com:3306';
     public static string $username = 'f135079';

@@ -78,7 +78,7 @@ class AlbumManager
      */
     public function getAllAlbums()
     {
-        $albums = DbManager::requestMultiple("SELECT id,title,dash_title,cover_photo,no_photos,visible FROM album ORDER BY `order`");
+        $albums = DbManager::requestMultiple("SELECT id,title,dash_title,cover_photo,no_photos,visible FROM album ORDER BY `order` DESC");
         $newAlbums = array();
         foreach ($albums as $album) {
             if ($album["cover_photo"] == Null) {

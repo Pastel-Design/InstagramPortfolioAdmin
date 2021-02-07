@@ -104,20 +104,20 @@ class UploadManager
      * @param $file
      * @param $album
      *
-     * @internal
-     *
      * @return string
+     *@internal
+     *
      */
-    private function uploadFromFolder($file, $album)
+    public static function uploadFromFolder($file, $album)
     {
+        $targetDir = "D:/wamp/www/InstagramPortfolioAdmin/www/images/Gallery/" . $album . "/" . $file;
         $ext = strtolower(array_reverse(explode(".", $file))[0]);
-        $fileName = ($filename = hash("sha256", $file)) . "." . $ext;
+        $fileName = ($filename = sha1_file($targetDir)) . "." . $ext;
         $fileNameWDir = sprintf(
             'images/fullView/%s.%s',
             $filename,
             $ext
         );
-        $targetDir = "D:/wamp/www/InstagramPortfolioAdmin/www/images/Gallery/" . $album . "/" . $file;
         copy($targetDir, $fileNameWDir);
         ImageFileManager::defaultImage($fileNameWDir);
         ImageFileManager::makeThumbnail($fileNameWDir);

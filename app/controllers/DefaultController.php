@@ -30,8 +30,6 @@ class DefaultController extends Controller
     public function process(array $params, array $gets = null)
     {
         /*
-         * FILE UPLOAD FOR ALBUMS
-         * !DO NOT USE
         set_time_limit(0);
         $albumManager = new AlbumManager();
         $albums = scandir("images/Gallery");
@@ -45,8 +43,7 @@ class DefaultController extends Controller
             $newAlbum = ["albumName" => $album, "images" => $images];
             array_push($newAlbums, $newAlbum);
         }
-        //$targetAlbum = $newAlbums[0];
-        //$newAlbums = array_slice($newAlbums,130,2);
+        $newAlbums = array_slice($newAlbums,20,112);
         foreach ($newAlbums as $targetAlbum) {
         $fileNames=array();
             foreach ($targetAlbum["images"] as $image) {
@@ -67,17 +64,17 @@ class DefaultController extends Controller
         }*/
         //FILE UPLOAD FOR IMAGES
         /*
-      set_time_limit(0);
-        $imageManager = new ImageManager();
-        $images = scandir("images/Gallery/Instagram");
-        array_shift($images);
-        array_shift($images);
-        $images = array_reverse($images);
+              set_time_limit(0);
+                $imageManager = new ImageManager();
+                $images = scandir("images/Gallery/Instagram");
+                array_shift($images);
+                array_shift($images);
+                $images = array_reverse($images);
 
-        foreach ($images as $image){
-            $filename=UploadManager::uploadFromFolder($image,"Instagram");
-            $imageManager->uploadImage(["imageTitle"=>null,"imageDescription"=>null],$filename);
-        }
+                foreach ($images as $image){
+                    $filename=UploadManager::uploadFromFolder($image,"Instagram");
+                    $imageManager->uploadImage(["imageTitle"=>null,"imageDescription"=>null],$filename);
+                }
         */
         $this->head['page_title'] = "";
         $this->head['page_keywords'] = "";
