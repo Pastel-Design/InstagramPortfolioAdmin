@@ -22,11 +22,11 @@
     </div>
     {if $igLayout}
         <div class="instagram-container {if !$igLayout}hidden{/if}">
-            <img src="images/fullview/igmockup.png" width="935">
+            <img src="http://garethjorden.com/images/fullview/igmockup.png" width="935">
             {ifset $images}
                 <div id="instagram-container">
                     {foreach $images as $image}
-                        <img class="grid-image" image-id="{$image["id"]}" src='images/thumbnail/{$image["filename"]}' loading="lazy">
+                        <img class="grid-image" image-id="{$image["id"]}" src='http://garethjorden.com/images/thumbnail/{$image["filename"]}' loading="lazy">
                     {/foreach}
                 </div>
             {/ifset}
@@ -36,7 +36,7 @@
                 <div class="container images-container" id="images-container">
                     {foreach $images as $image}
                         <div class="image-container{if $image["cover_photo"]} cover-photo{/if}" image-id="{$image["id"]}">
-                            <img src="images/fullview/{$image["filename"]}" width="350px" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image image">
+                            <img src="http://garethjorden.com/images/fullview/{$image["filename"]}" width="350px" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image image">
                             <label>Title:</label>
                             <input type="text" class="form-control" name="title" image-id="{$image["id"]}" value="{$image["title"]}">
                             <label>Description:</label>
@@ -64,7 +64,7 @@
                 <div class="container images-container" id="images-container">
                     {foreach $images as $image}
                         <div class="image-container{if $image["cover_photo"]} cover-photo{/if}" image-id="{$image["id"]}">
-                            <img src="images/fullview/{$image["filename"]}" width="350px" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image image">
+                            <img src="http://garethjorden.com/images/fullview/{$image["filename"]}" width="350px" album-id="{$albumId}" image-id="{$image["id"]}" class="album-image image">
                             <label>Title:</label>
                             <input type="text" class="form-control" name="title" image-id="{$image["id"]}" value="{$image["title"]}">
                             <label>Description:</label>
@@ -87,11 +87,11 @@
             {/ifset}
         </div>
         <div class="instagram-container {if !$igLayout}hidden{/if}">
-            <img src="images/fullview/igmockup.png" width="935">
+            <img src="http://garethjorden.com/images/fullview/igmockup.png" width="935">
             {ifset $images}
                 <div id="instagram-container">
                     {foreach $images as $image}
-                        <img class="grid-image" image-id="{$image["id"]}" src='images/thumbnail/{$image["filename"]}' loading="lazy">
+                        <img class="grid-image" image-id="{$image["id"]}" src='http://garethjorden.com/images/thumbnail/{$image["filename"]}' loading="lazy">
                     {/foreach}
                 </div>
             {/ifset}

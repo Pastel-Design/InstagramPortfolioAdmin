@@ -17,7 +17,7 @@
         <tbody id="albums-table-container">
         {foreach $albums as $album}
             <tr class="album-row" album-id="{$album["id"]}">
-                <td><img src="images/thumbnail/{$album["cover_photo"]}" width="150" loading="lazy"></td>
+                <td><img src="http://garethjorden.com/images/thumbnail/{$album["cover_photo"]}" width="150" loading="lazy"></td>
                 <td>{$album["title"]}</td>
                 <td>{$album["no_photos"]} photos</td>
                 <td>{if $album["visible"]}

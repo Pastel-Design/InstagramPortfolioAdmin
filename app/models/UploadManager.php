@@ -34,7 +34,7 @@ class UploadManager
                 array_push($files, ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext);
                 array_push($filenames, $file->getSanitizedName());
                 $fileNameWDir = sprintf(
-                    'images/fullView/%s.%s',
+                    '../../images/fullView/%s.%s',
                     $filename,
                     $ext
                 );
@@ -51,8 +51,8 @@ class UploadManager
         } catch (RuntimeException $exception) {
             if (!empty($files)) {
                 foreach ($files as $filename) {
-                    unlink("images/fullView/" . $filename);
-                    unlink("images/thumbnail/" . $filename);
+                    unlink("../../images/fullView/" . $filename);
+                    unlink("../../images/thumbnail/" . $filename);
                 }
             }
             return false;
@@ -77,7 +77,7 @@ class UploadManager
             }
             $fileName = ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext;
             $fileNameWDir = sprintf(
-                'images/fullView/%s.%s',
+                '../../images/fullView/%s.%s',
                 $filename,
                 $ext
             );
@@ -92,8 +92,8 @@ class UploadManager
             ImageFileManager::makeThumbnail($fileNameWDir);
             return $fileName;
         } catch (RuntimeException $exception) {
-            @unlink("images/fullView/" . $fileName);
-            @unlink("images/thumbnail/" . $fileName);
+            @unlink("../../images/fullView/" . $fileName);
+            @unlink("../../images/thumbnail/" . $fileName);
             return false;
         }
     }
