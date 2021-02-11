@@ -34,7 +34,7 @@ class UploadManager
                 array_push($files, ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext);
                 array_push($filenames, $file->getSanitizedName());
                 $fileNameWDir = sprintf(
-                    '../../images/fullView/%s.%s',
+                    '../../public_html/images/fullview/%s.%s',
                     $filename,
                     $ext
                 );
@@ -51,8 +51,8 @@ class UploadManager
         } catch (RuntimeException $exception) {
             if (!empty($files)) {
                 foreach ($files as $filename) {
-                    unlink("../../images/fullView/" . $filename);
-                    unlink("../../images/thumbnail/" . $filename);
+                    unlink("../../public_html/images/fullview/" . $filename);
+                    unlink("../../public_html/images/thumbnail/" . $filename);
                 }
             }
             return false;
@@ -75,9 +75,10 @@ class UploadManager
                     $ext = $file->getImageFileExtension();
                     break;
             }
+            //var_dump(scandir("../../public_html/images"));
             $fileName = ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext;
             $fileNameWDir = sprintf(
-                '../../images/fullView/%s.%s',
+                '../../public_html/images/fullview/%s.%s',
                 $filename,
                 $ext
             );
@@ -92,8 +93,8 @@ class UploadManager
             ImageFileManager::makeThumbnail($fileNameWDir);
             return $fileName;
         } catch (RuntimeException $exception) {
-            @unlink("../../images/fullView/" . $fileName);
-            @unlink("../../images/thumbnail/" . $fileName);
+            @unlink("../../public_html/images/fullview/" . $fileName);
+            @unlink("../../public_html/images/thumbnail/" . $fileName);
             return false;
         }
     }
@@ -114,7 +115,7 @@ class UploadManager
         $ext = strtolower(array_reverse(explode(".", $file))[0]);
         $fileName = ($filename = sha1_file($targetDir)) . "." . $ext;
         $fileNameWDir = sprintf(
-            'images/fullView/%s.%s',
+            'images/fullview/%s.%s',
             $filename,
             $ext
         );

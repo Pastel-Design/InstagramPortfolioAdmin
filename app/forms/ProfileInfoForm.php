@@ -73,7 +73,7 @@ final class ProfileInfoForm extends FormFactory
         $this->form->addEmail("email", "Email for login and contact:")
             ->setDefaultValue($this->email)
             ->setRequired(true);
-        $this->form->addSubmit("submit", "Edit");
+        $this->form->addSubmit("submit", "Edit profile info");
 
         if ($this->form->isSuccess()) {
             $values = $this->form->getValues("array");

@@ -32,7 +32,7 @@ class UpdateLoginForm extends FormFactory
     {
         $this->form->addPassword("login", "Password for administration of web:")
             ->setRequired(true);
-        $this->form->addSubmit("submit", "Update");
+        $this->form->addSubmit("submit", "Update password");
 
         //var_dump($this->form);
         if ($this->form->isSuccess()) {

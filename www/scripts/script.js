@@ -1,13 +1,13 @@
 document.querySelectorAll('.edit-image-btn').forEach(item => {
     item.addEventListener('click', event => {
-        functions.editImage(item.getAttribute("image-id"))
+        editImage(item.getAttribute("image-id"))
     })
 })
 document.querySelectorAll('.album-image').forEach(item => {
     item.addEventListener('click', event => {
         let answer = window.confirm("Set this image as cover of album?");
         if (answer) {
-            functions.setCoverPhoto(item.getAttribute("album-id"), item.getAttribute("image-id"))
+            setCoverPhoto(item.getAttribute("album-id"), item.getAttribute("image-id"))
         }
     })
 })
@@ -15,7 +15,7 @@ document.querySelectorAll('.delete-image-btn').forEach(item => {
     item.addEventListener('click', event => {
         let answer = window.confirm("Do you want to delete this image?");
         if (answer) {
-            functions.deleteImage(item.getAttribute("album-id"), item.getAttribute("image-id"))
+            deleteImage(item.getAttribute("album-id"), item.getAttribute("image-id"))
         }
     })
 })
@@ -23,7 +23,7 @@ document.querySelectorAll('.delete-album-btn').forEach(item => {
     item.addEventListener('click', event => {
         let answer = window.confirm("Do you want to delete this album?");
         if (answer) {
-            functions.deleteAlbum(item.getAttribute("album-id"))
+            deleteAlbum(item.getAttribute("album-id"))
         }
     })
 })
@@ -32,8 +32,8 @@ document.querySelectorAll('.reorder-up').forEach(item => {
         let imageId = item.getAttribute("image-id");
         let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
         let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
-        domFunctions.reorderUp(imageId, images, targetImage)
-        functions.databaseReorder(false)
+        reorderUp(imageId, images, targetImage)
+        databaseReorder(false)
     })
 })
 
@@ -42,8 +42,8 @@ document.querySelectorAll('.reorder-down').forEach(item => {
         let imageId = item.getAttribute("image-id");
         let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
         let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
-        domFunctions.reorderDown(imageId, images, targetImage)
-        functions.databaseReorder(false)
+        reorderDown(imageId, images, targetImage)
+        databaseReorder(false)
     })
 })
 
@@ -52,8 +52,8 @@ document.querySelectorAll('.album-reorder-up').forEach(item => {
         let albumId = item.getAttribute("album-id");
         let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
         let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
-        domFunctions.reorderAlbumUp(albumId, albums, targetAlbum)
-        functions.databaseAlbumReorder(false)
+        reorderAlbumUp(albumId, albums, targetAlbum)
+        databaseAlbumReorder(false)
     })
 })
 
@@ -62,8 +62,8 @@ document.querySelectorAll('.album-reorder-down').forEach(item => {
         let albumId = item.getAttribute("album-id");
         let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
         let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
-        domFunctions.reorderAlbumDown(albumId, albums, targetAlbum)
-        functions.databaseAlbumReorder(false)
+        reorderAlbumDown(albumId, albums, targetAlbum)
+        databaseAlbumReorder(false)
     })
 })
 
@@ -76,7 +76,7 @@ function editImage(imageId) {
     })
         .then(function (response) {
             let data = response["data"];
-            domFunctions.imageDataUpdate(data);
+            imageDataUpdate(data);
         })
         .catch(function (error) {
             console.log(error);
@@ -94,7 +94,7 @@ function setCoverPhoto(albumId, imageId) {
         }
     })
         .then(function (response) {
-            domFunctions.changeCoverPhoto(imageId)
+            changeCoverPhoto(imageId)
         })
         .catch(function (error) {
             console.log(error);
@@ -112,11 +112,11 @@ function deleteImage(albumId, imageId) {
         }
     })
         .then(function (response) {
-            domFunctions.deleteImageDiv(imageId)
+            deleteImageDiv(imageId)
             if (albumId != null) {
                 let id = response.data.response;
                 if (Number.isInteger(id)) {
-                    domFunctions.changeCoverPhoto(id)
+                    changeCoverPhoto(id)
                 }
                 databaseReorder(true)
             } else {
@@ -138,7 +138,7 @@ function deleteAlbum(albumId) {
         }
     })
         .then(function (response) {
-            domFunctions.deleteAlbumDiv(albumId)
+            deleteAlbumDiv(albumId)
         })
         .catch(function (error) {
             console.log(error);
