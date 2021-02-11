@@ -146,6 +146,8 @@ class HandleController extends Controller
      */
     public function reorderAlbum($params, $gets)
     {
+        $data = json_decode(file_get_contents('php://input'));
+        $gets["imagesOrder"] = $data->data->imagesOrder;
         if (count($gets) != 1) {
             http_response_code(404);
         } elseif (array_key_exists("imagesOrder", $gets)) {

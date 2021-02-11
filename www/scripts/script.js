@@ -150,12 +150,12 @@ function deleteAlbum(albumId) {
 
 function databaseReorder(reload) {
     let imagesOrder = []
-    let i = 1;
+    let i = document.querySelectorAll(".image").length;
     document.querySelectorAll(".image").forEach(item => {
-        imagesOrder.push(i++, item.getAttribute("image-id"))
+        imagesOrder.push(i--, item.getAttribute("image-id"))
     })
-    axios.get('/handle/reorderAlbum', {
-        params: {
+    axios.post('/handle/reorderAlbum', {
+        data: {
             "imagesOrder": imagesOrder
         }
     })
@@ -175,9 +175,9 @@ function databaseReorder(reload) {
 }
 function databaseAlbumReorder(reload) {
     let albumsOrder = []
-    let i = 1;
+    let i = document.querySelectorAll(".album-row").length;
     document.querySelectorAll(".album-row").forEach(item => {
-        albumsOrder.push(i++, item.getAttribute("album-id"))
+        albumsOrder.push(i--, item.getAttribute("album-id"))
     })
     axios.get('/handle/reorderAlbums', {
         params: {
