@@ -25,23 +25,23 @@ class ProfileInfoManager
 
     public function updateLandingPage($newFilename)
     {
-        if ($filename=DbManager::requestUnit("SELECT filename FROM landing_page_image WHERE id = 1;")) {
+        if ($filename = DbManager::requestUnit("SELECT desktop FROM landing_page_image WHERE id = 1;")) {
             unlink("images/fullview/" . $filename);
             unlink("images/thumbnail/" . $filename);
-            return DbManager::requestAffect("UPDATE landing_page_image SET filename = ? WHERE id = 1", [$newFilename]);
-        }else{
-            return DbManager::requestAffect("INSERT INTO landing_page_image(id, filename)  VALUES (1,?)", [$newFilename]);
+            return DbManager::requestAffect("UPDATE landing_page_image SET desktop = ? WHERE id = 1", [$newFilename]);
+        } else {
+            return DbManager::requestAffect("INSERT INTO landing_page_image(id, desktop,mobile)  VALUES (1,?,?)", [$newFilename, $newFilename]);
         }
     }
 
     public function getLandingPageImage()
     {
-        return DbManager::requestUnit("SELECT filename FROM landing_page_image WHERE id = 1");
+        return DbManager::requestSingle("SELECT desktop,mobile FROM landing_page_image WHERE id = 1");
     }
 
     public function updateProfilePicture($newFilename)
     {
-        if ($filename=DbManager::requestUnit("SELECT profile_picture FROM web_info WHERE id = 1;")) {
+        if ($filename = DbManager::requestUnit("SELECT profile_picture FROM web_info WHERE id = 1;")) {
             unlink("images/fullview/" . $filename);
             unlink("images/thumbnail/" . $filename);
         }
@@ -51,5 +51,16 @@ class ProfileInfoManager
     public function getProfilePicture()
     {
         return DbManager::requestUnit("SELECT profile_picture FROM web_info WHERE id = 1");
+    }
+
+    public function updateLandingPageMobile($newFilename)
+    {
+        if ($filename = DbManager::requestUnit("SELECT mobile FROM landing_page_image WHERE id = 1;")) {
+            unlink("images/fullview/" . $filename);
+            unlink("images/thumbnail/" . $filename);
+            return DbManager::requestAffect("UPDATE landing_page_image SET mobile = ? WHERE id = 1", [$newFilename]);
+        } else {
+            return DbManager::requestAffect("INSERT INTO landing_page_image(id, desktop,mobile)  VALUES (1,?,?)", [$newFilename, $newFilename]);
+        }
     }
 }

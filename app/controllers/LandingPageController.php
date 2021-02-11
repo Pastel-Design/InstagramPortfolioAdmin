@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\forms\LandingPageForm;
+use app\forms\LandingPageFormMobile;
 use app\forms\ProfilePictureForm;
 use app\models\ProfileInfoManager;
 use app\models\UploadManager;
@@ -35,9 +36,16 @@ class LandingPageController extends Controller
     public function process(array $params, array $gets = null)
     {
         $landingPageForm = new LandingPageForm;
+        $landingPageFormMobile = new LandingPageFormMobile;
         $this->data["landingPageForm"] = $landingPageForm->create(function ($values) {
             if ($filename = UploadManager::UploadSingle($values["filename"])) {
                 $this->profileInfoManager->updateLandingPage($filename);
+            }
+            Router::reroute("landing-page");
+        });
+        $this->data["landingPageFormMobile"] = $landingPageFormMobile->create(function ($values) {
+            if ($filename = UploadManager::UploadSingle($values["filename"])) {
+                $this->profileInfoManager->updateLandingPageMobile($filename);
             }
             Router::reroute("landing-page");
         });
