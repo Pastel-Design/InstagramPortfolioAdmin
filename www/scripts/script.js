@@ -1,71 +1,74 @@
-document.querySelectorAll('.edit-image-btn').forEach(item => {
-    item.addEventListener('click', event => {
-        editImage(item.getAttribute("image-id"))
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.querySelectorAll('.edit-image-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            editImage(item.getAttribute("image-id"))
+        })
     })
-})
-document.querySelectorAll('.album-image').forEach(item => {
-    item.addEventListener('click', event => {
-        let answer = window.confirm("Set this image as cover of album?");
-        if (answer) {
-            setCoverPhoto(item.getAttribute("album-id"), item.getAttribute("image-id"))
-        }
+    document.querySelectorAll('.album-image').forEach(item => {
+        item.addEventListener('click', event => {
+            let answer = window.confirm("Set this image as cover of album?");
+            if (answer) {
+                setCoverPhoto(item.getAttribute("album-id"), item.getAttribute("image-id"))
+            }
+        })
     })
-})
-document.querySelectorAll('.delete-image-btn').forEach(item => {
-    item.addEventListener('click', event => {
-        let answer = window.confirm("Do you want to delete this image?");
-        if (answer) {
-            deleteImage(item.getAttribute("album-id"), item.getAttribute("image-id"))
-        }
+    document.querySelectorAll('.delete-image-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            let answer = window.confirm("Do you want to delete this image?");
+            if (answer) {
+                deleteImage(item.getAttribute("album-id"), item.getAttribute("image-id"))
+            }
+        })
     })
-})
-document.querySelectorAll('.delete-album-btn').forEach(item => {
-    item.addEventListener('click', event => {
-        let answer = window.confirm("Do you want to delete this album?");
-        if (answer) {
-            deleteAlbum(item.getAttribute("album-id"))
-        }
+    document.querySelectorAll('.delete-album-btn').forEach(item => {
+        item.addEventListener('click', event => {
+            let answer = window.confirm("Do you want to delete this album?");
+            if (answer) {
+                deleteAlbum(item.getAttribute("album-id"))
+            }
+        })
     })
-})
-document.querySelectorAll('.reorder-up').forEach(item => {
-    item.addEventListener('click', event => {
-        let imageId = item.getAttribute("image-id");
-        let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
-        let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
-        reorderUp(imageId, images, targetImage)
-        databaseReorder(false)
+    document.querySelectorAll('.reorder-up').forEach(item => {
+        item.addEventListener('click', event => {
+            let imageId = item.getAttribute("image-id");
+            let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
+            let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
+            reorderUp(imageId, images, targetImage)
+            databaseReorder(false)
+        })
+    })
+
+    document.querySelectorAll('.reorder-down').forEach(item => {
+        item.addEventListener('click', event => {
+            let imageId = item.getAttribute("image-id");
+            let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
+            let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
+            reorderDown(imageId, images, targetImage)
+            databaseReorder(false)
+        })
+    })
+
+    document.querySelectorAll('.album-reorder-up').forEach(item => {
+        item.addEventListener('click', event => {
+            let albumId = item.getAttribute("album-id");
+            let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
+            let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
+            reorderAlbumUp(albumId, albums, targetAlbum)
+            databaseAlbumReorder(false)
+        })
+    })
+
+    document.querySelectorAll('.album-reorder-down').forEach(item => {
+        item.addEventListener('click', event => {
+            let albumId = item.getAttribute("album-id");
+            let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
+            let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
+            reorderAlbumDown(albumId, albums, targetAlbum)
+            databaseAlbumReorder(false)
+        })
     })
 })
 
-document.querySelectorAll('.reorder-down').forEach(item => {
-    item.addEventListener('click', event => {
-        let imageId = item.getAttribute("image-id");
-        let images = Array.prototype.slice.call(document.querySelectorAll(".image-container"))
-        let targetImage = document.querySelector(".image-container[image-id='" + imageId + "']")
-        reorderDown(imageId, images, targetImage)
-        databaseReorder(false)
-    })
-})
-
-document.querySelectorAll('.album-reorder-up').forEach(item => {
-    item.addEventListener('click', event => {
-        let albumId = item.getAttribute("album-id");
-        let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
-        let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
-        reorderAlbumUp(albumId, albums, targetAlbum)
-        databaseAlbumReorder(false)
-    })
-})
-
-document.querySelectorAll('.album-reorder-down').forEach(item => {
-    item.addEventListener('click', event => {
-        let albumId = item.getAttribute("album-id");
-        let albums = Array.prototype.slice.call(document.querySelectorAll(".album-row"))
-        let targetAlbum = document.querySelector(".album-row[album-id='" + albumId + "']")
-        reorderAlbumDown(albumId, albums, targetAlbum)
-        databaseAlbumReorder(false)
-    })
-})
 
 function editImage(imageId) {
     axios.get('/handle/editImage/' + imageId, {
@@ -173,6 +176,7 @@ function databaseReorder(reload) {
             // always executed
         });
 }
+
 function databaseAlbumReorder(reload) {
     let albumsOrder = []
     let i = document.querySelectorAll(".album-row").length;
@@ -198,7 +202,8 @@ function databaseAlbumReorder(reload) {
             // always executed
         });
 }
-function sessionLayoutToggle(value){
+
+function sessionLayoutToggle(value) {
     axios.get('/handle/sessionLayoutToggle', {
         params: {
             "value": value
@@ -339,7 +344,7 @@ window.onload = () => {
     let layoutToggle = document.getElementById("darkmodeToggleButton");
     if (layoutToggle) {
         layoutToggle.addEventListener("click", setLayout);
-        let isIg = (layoutToggle.getAttribute("toggle")==="true");
+        let isIg = (layoutToggle.getAttribute("toggle") === "true");
 
         function switchLayout() {
             let instagramContainer = document.querySelector(".instagram-container")

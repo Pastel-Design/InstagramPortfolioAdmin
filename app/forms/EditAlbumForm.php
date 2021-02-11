@@ -53,11 +53,9 @@ final class  EditAlbumForm extends FormFactory
             ->setRequired(true);
         $this->form->addTextArea('albumDescription', 'Album description:')
             ->setHtmlAttribute("class", "form-control")
-            ->setDefaultValue($this->description)
-            ->setRequired(true);
+            ->setDefaultValue($this->description);
         $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setDefaultValue($this->keywords)
-            ->setRequired(true);
+            ->setDefaultValue($this->keywords);
         $this->form->addCheckbox('albumVisible', "Album is visible:")
             ->setDefaultValue($this->visible);
         $this->form->addSubmit("submit", "Edit");

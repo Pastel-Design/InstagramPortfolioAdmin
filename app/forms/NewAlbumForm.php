@@ -39,11 +39,9 @@ final class  NewAlbumForm extends FormFactory
             ->setHtmlAttribute("placeholder", "album title")
             ->setRequired(true);
         $this->form->addText('albumDescription', 'Album description:')
-            ->setHtmlAttribute("placeholder", "album description *")
-            ->setRequired(true);
+            ->setHtmlAttribute("placeholder", "album description *");
         $this->form->addText('albumKeywords', 'Album keywords:')
-            ->setHtmlAttribute("placeholder", "album keywords *")
-            ->setRequired(true);
+            ->setHtmlAttribute("placeholder", "album keywords *");
         $this->form->addSubmit("submit", "Create");
 
         if ($this->form->isSuccess()) {

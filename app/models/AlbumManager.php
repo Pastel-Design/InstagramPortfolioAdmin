@@ -125,7 +125,7 @@ class AlbumManager
     {
         $newImages = array();
         $albumId = DbManager::requestUnit("SELECT id FROM album WHERE dash_title = ?", [$title]);
-        $images = DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ? ORDER BY `order`", [$albumId]);
+        $images = DbManager::requestMultiple("SELECT * FROM image WHERE album_id = ? ORDER BY `order` DESC", [$albumId]);
         foreach ($images as $image) {
             if (DbManager::requestUnit("SELECT cover_photo FROM album WHERE id=?", [$albumId]) == $image["id"]) {
                 $image["cover_photo"] = true;
