@@ -37,7 +37,6 @@ class ImagesController extends Controller
         $images = $this->imageManager->getAllImages();
         $uploadImageFactory = new UploadImageForm();
         $this->data["newImageForm"] = $uploadImageFactory->create(function ($values) {
-            var_dump($values);
             if ($image = UploadManager::UploadSingle($values["imageFile"])) {
                 $this->imageManager->uploadImage($values,$image);
             }

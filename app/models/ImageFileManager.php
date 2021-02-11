@@ -43,7 +43,7 @@ class ImageFileManager
      */
     static function makeThumbnail(string $imgURL)
     {
-        $newURL = "images/thumbnail/" . array_reverse(explode("/", $imgURL))[0];
+        $newURL = "../../public_html/images/thumbnail/" . array_reverse(explode("/", $imgURL))[0];
         $oldURL = $imgURL;
         try {
             self::editImage($newURL,$oldURL,ImageOptimizerConfig::$thumbnailWidth,ImageOptimizerConfig::$thumbnailHeight);

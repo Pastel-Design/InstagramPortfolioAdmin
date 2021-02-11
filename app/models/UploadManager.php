@@ -75,7 +75,6 @@ class UploadManager
                     $ext = $file->getImageFileExtension();
                     break;
             }
-            //var_dump(scandir("../../public_html/images"));
             $fileName = ($filename = hash("sha256", $file->getTemporaryFile())) . "." . $ext;
             $fileNameWDir = sprintf(
                 '../../public_html/images/fullview/%s.%s',

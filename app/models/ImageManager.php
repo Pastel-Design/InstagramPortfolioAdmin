@@ -25,7 +25,7 @@ class ImageManager
         return DbManager::requestAffect('
             INSERT INTO image(filename, data_type, added, edited, title, description, `order`, album_id) 
             VALUES(?,?,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,?,?,null)',
-            [$filename, explode(".", $filename)[1], $formValues["imageTitle"], $formValues["imageDescription"], $order]);
+            [$filename, explode(".", $filename)[1], $formValues["imageTitle"], $formValues["imageDescription"], ($order+1)]);
     }
 
     /**
@@ -34,6 +34,6 @@ class ImageManager
 
     public function getAllImages()
     {
-        return DbManager::requestMultiple("SELECT * FROM image WHERE album_id IS NULL ORDER BY `order`");
+        return DbManager::requestMultiple("SELECT * FROM image WHERE album_id IS NULL ORDER BY `order` DESC");
     }
 }

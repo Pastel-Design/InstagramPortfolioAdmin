@@ -76,6 +76,11 @@ class DefaultController extends Controller
                     $imageManager->uploadImage(["imageTitle"=>null,"imageDescription"=>null],$filename);
                 }
         */
+        /*$images = DbManager::requestMultiple("SELECT * FROM `image` WHERE album_id IS NULL");
+        $images =array_reverse($images);
+        foreach ($images as $key => $image){
+            DbManager::requestAffect("UPDATE image SET `order` = ? WHERE id = ?",[($key+1),$image["id"]]);
+        }*/
         $this->head['page_title'] = "";
         $this->head['page_keywords'] = "";
         $this->head['page_description'] = "";
