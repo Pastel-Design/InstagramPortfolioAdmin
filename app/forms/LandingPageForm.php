@@ -36,7 +36,8 @@ final class LandingPageForm extends FormFactory
     public function create(callable $onSuccess): Form
     {
         $this->form->addUpload('filename')
-            ->addRule($this->form::IMAGE, "You can upload only images");
+            ->addRule($this->form::IMAGE, "You can upload only images")
+            ->addRule($this->form::MAX_FILE_SIZE, "You can upload only maximum of 40MB", 40000000);
         $this->form->addSubmit("submit", "Upload");
 
         if ($this->form->isSuccess()) {
