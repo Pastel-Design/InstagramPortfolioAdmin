@@ -62,6 +62,7 @@ final class ProfileInfoForm extends FormFactory
             ->setRequired(true);
         $this->form->addTextArea('bioDescription', 'Profile bio description:')
             ->setDefaultValue($this->bioDescription)
+            ->setHtmlId("summernote")
             ->setHtmlAttribute("class", "form-control")
             ->setRequired(true);
         $this->form->addText('instagramLink', 'Instagram link:')
